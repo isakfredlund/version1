@@ -56,6 +56,7 @@ public class NextClassWidget {
 				Component c = (Component) i.next();
 				if (c instanceof VEvent) {
 					items.add(new ScheduleItem((VEvent) c));
+					
 				}
 			}
 		}
