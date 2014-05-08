@@ -59,6 +59,7 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 	
 	public FragmentHome()
 	{
+		//Hej Hej Hem!
 	}
 
 	@Override
