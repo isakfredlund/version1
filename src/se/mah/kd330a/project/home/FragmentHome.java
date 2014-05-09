@@ -257,5 +257,6 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 		}
 		
 	}
-// Sneaky ändring av André Stenberg. 
+// Sneaky ï¿½ndring av Andrï¿½ Stenberg.
+//Meeeeh! av Sandra P
 }
