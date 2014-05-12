@@ -117,6 +117,13 @@ public class MainActivity extends FragmentActivity implements Observer{
         }
     }
     
+    public void onBackPressed() {
+    	getActionBar().setTitle(mTitle);
+        invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+        super.onBackPressed();
+    return;
+    }
+    
     @Override
     protected void onPause() {
     	// TODO Auto-generated method stub

@@ -263,5 +263,4 @@ public class FragmentScheduleWeek extends Fragment implements OnChildClickListen
 		// TODO Auto-generated method stub
 		return parent.collapseGroup(groupPosition);
 	}
-
 }

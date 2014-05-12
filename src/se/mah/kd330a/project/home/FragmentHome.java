@@ -59,6 +59,7 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 	private boolean profileRegistered = false;
 	private FeedManager ITSLfeedManager;
 	private String TAG ="FragmentHome";
+	private String actionBarTitle[];
 	
 	public FragmentHome()
 	{
@@ -101,7 +102,9 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 		{
 			ITSLfeedManager.reset();
 			ITSLfeedManager.processFeeds();
-		}	
+		}
+		actionBarTitle = getResources().getStringArray(R.array.menu_texts);
+		getActivity().getActionBar().setTitle(actionBarTitle[0]);
 		//Perhaps or all should be done in ScheduledFixedDelay????
 		return rootView;
 	}
