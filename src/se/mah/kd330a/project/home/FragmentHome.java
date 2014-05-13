@@ -104,7 +104,7 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 			ITSLfeedManager.processFeeds();
 		}
 		actionBarTitle = getResources().getStringArray(R.array.menu_texts);
-		getActivity().getActionBar().setTitle(actionBarTitle[0]);
+		getActivity().getActionBar().setTitle(actionBarTitle[0]); //Fetches "Home" from the string array
 		//Perhaps or all should be done in ScheduledFixedDelay????
 		return rootView;
 	}
