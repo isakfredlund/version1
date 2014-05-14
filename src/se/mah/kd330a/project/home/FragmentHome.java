@@ -60,6 +60,7 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 	private FeedManager ITSLfeedManager;
 	private String TAG ="FragmentHome";
 	private String actionBarTitle[];
+	private boolean nbrOfClasses;
 	
 	public FragmentHome()
 	{
@@ -166,7 +167,8 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 			textNextClassEndTime.setText(nextClass.getEndTime());
 			TextView textNextClassLocation = (TextView) nextClassWidget.findViewById(R.id.text_next_class_location);
 			textNextClassLocation.setText(nextClass.getLocation());			
-		
+	
+			
 			View scheduleColor1 = (View) nextClassWidget.findViewById(R.id.home_schedule1);
 			View scheduleColor2 = (View) nextClassWidget.findViewById(R.id.home_schedule2);
 			if (Me.getInstance().getCourse(courseID)!= null){
@@ -177,11 +179,14 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 				scheduleColor2.setBackgroundColor(getResources().getColor(R.color.red_mah));
 			}
 		}
-		else
-		{
-			//nextClassWidget.setVisibility(LinearLayout.GONE);
-			//TextView textNextClassDate = (TextView) nextClassWidget.findViewById(R.id.text_next_class_date);
-			//textNextClassDate.setText("No classes found updating....");
+		
+			
+			
+		
+	if (nbrOfClasses) {
+			nextClassWidget.setVisibility(LinearLayout.GONE);
+			TextView textNextClassDate = (TextView) nextClassWidget.findViewById(R.id.text_next_class_date);
+			textNextClassDate.setText("No classes found updating....");
 		}
 
 	}
