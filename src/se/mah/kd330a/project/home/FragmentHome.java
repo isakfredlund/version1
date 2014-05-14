@@ -94,7 +94,7 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 		Log.i("FragmentHome", "OnCreateView: ");
 		rootView = (ViewGroup) inflater.inflate(R.layout.fragment_screen_home, container, false);
 		setNextKronoxClass(rootView);
-		setNewsFeedMah(rootView);
+		//setNewsFeedMah(rootView);
 		ITSLfeedManager = new FeedManager(this, getActivity().getApplicationContext());
 		//ITSLfeedManager.getFeedList().size()
 		Log.i(TAG,"ITSLfeedManager.getFeedList().size()" + ITSLfeedManager.getFeedList().size());
@@ -109,7 +109,7 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 		return rootView;
 	}
 
-	private void setNewsFeedMah(ViewGroup rootView)
+	/**private void setNewsFeedMah(ViewGroup rootView)
 	{
 		Log.i(TAG,"setNewsFeedMah: ");
 		try
@@ -144,7 +144,7 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 			Log.e(TAG, "Error in get method");
 		}
 
-	}
+	}**/
 
 	private void setNextKronoxClass(ViewGroup rootView)
 	{
@@ -250,7 +250,7 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 			});
 			
 			break;
-		case MAHNEWS:
+		/**case MAHNEWS:
 			getActivity().runOnUiThread(new Runnable(){
 				@Override
 				public void run() {
@@ -258,7 +258,7 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 				}
 				
 			});
-			break;
+			break;**/
 		default:
 			break;
 		}
