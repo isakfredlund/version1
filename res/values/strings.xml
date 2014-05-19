@@ -130,8 +130,8 @@
     <string name="itsl_widget_heading">It´s Learning</string>
     <string name="news_widget_heading">News from MAH</string>
     <string name="fultext1">No classes today.</string>       							<!--New string to schedule-view // Isak -->
-    <string name="fultext">Loading...</string>
-    <string name="fultitle">From It\'s Learning</string>
+    <!-- <string name="fultext">Loading...</string> 	//Not being used/Isak-->
+    <string name="fultitle">New notifications</string>
     
     <string name="home_block_description">Image of Malmö Högskola</string>
     <string name="title_activity_splash">SplashActivity</string>
