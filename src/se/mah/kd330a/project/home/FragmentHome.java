@@ -218,11 +218,11 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 					break;
 				}
 			}	
-			((TextView)widget.findViewById(R.id.text_itsl_title)).setText(a.getArticleHeader());
+			//((TextView)widget.findViewById(R.id.text_itsl_title)).setText(a.getArticleHeader());
 			/*((TextView)widget.findViewById(R.id.text_itsl_date)).setText(a.getArticleDate());*/
-			((TextView)widget.findViewById(R.id.text_itsl_content)).setText(a.getArticleText());
+			//((TextView)widget.findViewById(R.id.text_itsl_content)).setText(a.getArticleText());
 			/*((View)widget.findViewById(R.id.home_itsl1)).setBackgroundColor(color);*/
-			((View)widget.findViewById(R.id.home_itsl2)).setBackgroundColor(color);
+			//((View)widget.findViewById(R.id.home_itsl2)).setBackgroundColor(color);
 		}
 		catch(Exception e)
 		{
