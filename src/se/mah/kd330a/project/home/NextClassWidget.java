@@ -20,6 +20,14 @@ public class NextClassWidget {
 	private String date;
 	private String startTime;
 	private String endTime;
+	private String courseName2;
+	private String courseId2;
+	private String location2;
+	private String date2;
+	private String startTime2;
+	private String endTime2;
+	private int nbrOfItems=0;
+	private static String TAG = "NextClassWidget";
 
 	public NextClassWidget() {
 
@@ -32,6 +40,12 @@ public class NextClassWidget {
 		this.startTime = "10:15";
 		this.endTime = "12:00";
 		this.date = "Today";
+		this.courseName2 = "Att utvecklas som hand";
+		this.courseId2 = "KD330a2";
+		this.location2 = "B310, K2B212,...";
+		this.startTime2 = "11:15";
+		this.endTime2 = "12:00";
+		this.date2 = "Today2";
 
 	}
 
@@ -50,6 +64,7 @@ public class NextClassWidget {
 	private void listEvents() {
 		items = new ArrayList<ScheduleItem>();
 		Collection<?> kronox_events = KronoxCalendar.todaysEvents();
+		Log.i(TAG,"Nbr of items in list: "+kronox_events.size());
 		if (kronox_events != null) {
 			items.clear();
 			for (Iterator<?> i = kronox_events.iterator(); i.hasNext();) {
@@ -63,8 +78,8 @@ public class NextClassWidget {
 	}
 
 	private boolean setData() {
-		if (!items.isEmpty()) {
-
+		if (items.size()==1) {
+			nbrOfItems=1;
 			//setCourseName(items.get(0).getCourseName());
 			setLocation(items.get(0).getRoomCode());
 			setStartTime(items.get(0).getStartTime());
@@ -73,7 +88,22 @@ public class NextClassWidget {
 			setCourseId(items.get(0).getCourseID());
 			setCourseName(Me.getInstance().getCourse(getCourseId()).getDisplaynameEn()); //Not so pretty
 			return true;
-		} else {
+		} else if (items.size()>1){
+			nbrOfItems=2;
+			setLocation(items.get(0).getRoomCode());
+			setStartTime(items.get(0).getStartTime());
+			setEndTime(items.get(0).getEndTime());
+			setDate(items.get(0).getShortWeekDay() + ", " + items.get(0).getDateAndTime2());
+			setCourseId(items.get(0).getCourseID());
+			setCourseName(Me.getInstance().getCourse(getCourseId()).getDisplaynameEn()); //Not so pretty
+			setLocation2(items.get(1).getRoomCode());
+			setStartTime2(items.get(1).getStartTime());
+			setEndTime2(items.get(1).getEndTime());
+			setDate2(items.get(1).getShortWeekDay() + ", " + items.get(1).getDateAndTime2());
+			setCourseId2(items.get(1).getCourseID());
+			setCourseName2(Me.getInstance().getCourse(getCourseId2()).getDisplaynameEn()); //Not so pretty
+			return true;
+		}else{	
 			Log.e(getClass().toString(), "item list is empty");
 			return false;
 		}
@@ -126,4 +156,56 @@ public class NextClassWidget {
 	public void setDate(String date) {
 		this.date = date;
 	}
+ //Item2
+	public String getCourseName2() {
+		return courseName2;
+	}
+
+	public String getCourseId2() {
+		return courseId2;
+	}
+
+	public String getLocation2() {
+		return location2;
+	}
+
+	public String getDate2() {
+		return date2;
+	}
+
+	public String getStartTime2() {
+		return startTime2;
+	}
+
+	public String getEndTime2() {
+		return endTime2;
+	}
+
+	public int getNbrOfItems() {
+		return nbrOfItems;
+	}
+	public void setCourseName2(String courseName2) {
+		this.courseName2 = courseName2;
+	}
+
+	public void setCourseId2(String courseId2) {
+		this.courseId2 = courseId2;
+	}
+
+	public void setLocation2(String location2) {
+		this.location2 = location2;
+	}
+
+	public void setDate2(String date2) {
+		this.date2 = date2;
+	}
+
+	public void setStartTime2(String startTime2) {
+		this.startTime2 = startTime2;
+	}
+
+	public void setEndTime2(String endTime2) {
+		this.endTime2 = endTime2;
+	}
+
 }

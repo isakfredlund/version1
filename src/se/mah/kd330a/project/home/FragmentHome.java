@@ -78,7 +78,9 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 		try
 		{
 			nextClass = new NextClassWidget();
-			profileRegistered = nextClass.anyClassesToday();
+			//Sets profileregistered to true if there are things in the calendar not very logical at all rename??
+			//Also creates the nextClass widget with correct info about first event
+			profileRegistered = nextClass.anyClassesToday(); 
 		}
 		catch (Exception e)
 		{
@@ -91,7 +93,7 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 	{
 		Log.i("FragmentHome", "OnCreateView: ");
 		rootView = (ViewGroup) inflater.inflate(R.layout.fragment_screen_home, container, false);
-		setNextKronoxClass(rootView);
+		setNextKronoxClass(rootView); //ok here is the stuff 
 		//setNewsFeedMah(rootView);
 		ITSLfeedManager = new FeedManager(this, getActivity().getApplicationContext());
 		//ITSLfeedManager.getFeedList().size()
@@ -148,39 +150,70 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 	{
 		
 		LinearLayout nextClassWidget = (LinearLayout) rootView.findViewById(R.id.next_class_widget);
-		nextClassWidget.setVisibility(LinearLayout.VISIBLE);
-		String courseName = nextClass.getCourseName();
-		String courseID = nextClass.getCourseId();
+		nextClassWidget.setVisibility(LinearLayout.VISIBLE); //The visibility can be used here....
+		LinearLayout nextClassWidget2 = (LinearLayout) rootView.findViewById(R.id.next_class_widget_2);
+		nextClassWidget.setVisibility(LinearLayout.INVISIBLE); //The visibility can be used here....
+		//String courseName = nextClass.getCourseName();
+		//String courseID = nextClass.getCourseId();
 		
 		if (profileRegistered)
 		{
-			TextView textNextClassName = (TextView) nextClassWidget.findViewById(R.id.text_next_class_name);
-			textNextClassName.setText(courseName);
-			TextView textNextClassDate = (TextView) nextClassWidget.findViewById(R.id.text_next_class_date);
-			textNextClassDate.setText(nextClass.getDate());
-			TextView textNextClassStartTime = (TextView) nextClassWidget.findViewById(R.id.text_next_class_start_time);
-			textNextClassStartTime.setText(nextClass.getStartTime());
-			TextView textNextClassEndTime = (TextView) nextClassWidget.findViewById(R.id.text_next_class_end_time);
-			textNextClassEndTime.setText(nextClass.getEndTime());
-			TextView textNextClassLocation = (TextView) nextClassWidget.findViewById(R.id.text_next_class_location);
-			textNextClassLocation.setText(nextClass.getLocation());			
-	
-			
-			View scheduleColor1 = (View) nextClassWidget.findViewById(R.id.home_schedule1);
-			View scheduleColor2 = (View) nextClassWidget.findViewById(R.id.home_schedule2);
-			if (Me.getInstance().getCourse(courseID)!= null){
-				scheduleColor1.setBackgroundColor(Me.getInstance().getCourse(courseID).getColor());
-				scheduleColor2.setBackgroundColor(Me.getInstance().getCourse(courseID).getColor());
-			}else{
-				scheduleColor1.setBackgroundColor(getResources().getColor(R.color.red_mah));
-				scheduleColor2.setBackgroundColor(getResources().getColor(R.color.red_mah));
+			if (nextClass.getNbrOfItems()>0){
+				nextClassWidget.setVisibility(LinearLayout.VISIBLE);
+				TextView textNextClassName = (TextView) nextClassWidget.findViewById(R.id.text_next_class_name);
+				textNextClassName.setText(nextClass.getCourseName());
+				TextView textNextClassDate = (TextView) nextClassWidget.findViewById(R.id.text_next_class_date);
+				textNextClassDate.setText(nextClass.getDate());
+				TextView textNextClassStartTime = (TextView) nextClassWidget.findViewById(R.id.text_next_class_start_time);
+				textNextClassStartTime.setText(nextClass.getStartTime());
+				TextView textNextClassEndTime = (TextView) nextClassWidget.findViewById(R.id.text_next_class_end_time);
+				textNextClassEndTime.setText(nextClass.getEndTime());
+				TextView textNextClassLocation = (TextView) nextClassWidget.findViewById(R.id.text_next_class_location);
+				textNextClassLocation.setText(nextClass.getLocation());			
+		
+				
+				View scheduleColor1 = (View) nextClassWidget.findViewById(R.id.home_schedule1);
+				View scheduleColor2 = (View) nextClassWidget.findViewById(R.id.home_schedule2);
+				String courseID = nextClass.getCourseId();
+				if (Me.getInstance().getCourse(courseID)!= null){
+					scheduleColor1.setBackgroundColor(Me.getInstance().getCourse(courseID).getColor());
+					scheduleColor2.setBackgroundColor(Me.getInstance().getCourse(courseID).getColor());
+				}else{
+					scheduleColor1.setBackgroundColor(getResources().getColor(R.color.red_mah));
+					scheduleColor2.setBackgroundColor(getResources().getColor(R.color.red_mah));
+				}
+			}
+			if(nextClass.getNbrOfItems()>1){
+				nextClassWidget2.setVisibility(LinearLayout.VISIBLE);
+				TextView textNextClassName = (TextView) nextClassWidget2.findViewById(R.id.text_next_class_name_2);
+				textNextClassName.setText(nextClass.getCourseName2());
+				TextView textNextClassDate = (TextView) nextClassWidget2.findViewById(R.id.text_next_class_date_2);
+				textNextClassDate.setText(nextClass.getDate2());
+				TextView textNextClassStartTime = (TextView) nextClassWidget2.findViewById(R.id.text_next_class_start_time_2);
+				textNextClassStartTime.setText(nextClass.getStartTime2());
+				TextView textNextClassEndTime = (TextView) nextClassWidget2.findViewById(R.id.text_next_class_end_time_2);
+				textNextClassEndTime.setText(nextClass.getEndTime2());
+				TextView textNextClassLocation = (TextView) nextClassWidget2.findViewById(R.id.text_next_class_location_2);
+				textNextClassLocation.setText(nextClass.getLocation2());			
+		
+				
+				View scheduleColor1 = (View) nextClassWidget2.findViewById(R.id.home_schedule1_2);
+				View scheduleColor2 = (View) nextClassWidget2.findViewById(R.id.home_schedule2_2);
+				String courseID = nextClass.getCourseId2();
+				if (Me.getInstance().getCourse(courseID)!= null){
+					scheduleColor1.setBackgroundColor(Me.getInstance().getCourse(courseID).getColor());
+					scheduleColor2.setBackgroundColor(Me.getInstance().getCourse(courseID).getColor());
+				}else{
+					scheduleColor1.setBackgroundColor(getResources().getColor(R.color.red_mah));
+					scheduleColor2.setBackgroundColor(getResources().getColor(R.color.red_mah));
+				}
 			}
 		}
 		
 			
 			
 		
-	if (nbrOfClasses) {
+		if (nbrOfClasses) {
 			nextClassWidget.setVisibility(LinearLayout.GONE);
 			TextView textNextClassDate = (TextView) nextClassWidget.findViewById(R.id.text_next_class_date);
 			textNextClassDate.setText("No classes found updating....");
