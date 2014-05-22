@@ -43,6 +43,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -115,7 +116,9 @@ public class MainActivity extends FragmentActivity implements Observer{
         if (savedInstanceState == null) {
             selectItem(0);
         }
+
     }
+   
     
     public void onBackPressed() {
     	getActionBar().setTitle(mTitle);

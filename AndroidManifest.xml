@@ -77,6 +77,7 @@
             android:label="@string/title_activity_ad_ladok_test"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         </activity>
+        
     </application>
 
 </manifest>

@@ -28,7 +28,13 @@
         <item>@drawable/menuitem_6</item>
     </string-array>
     
+    <string-array name="client_id">
+        <item>459cd68d82d642bfb73678ceb77290cd</item>
+    </string-array>
     
+    <string-array name="client_secret">
+        <item>7a0733d8b4f64d4eb0a5e0394cae5074</item>
+    </string-array>
     
     
     <string-array name ="faqOptions">
@@ -255,5 +261,12 @@
     <string name="activity">Activity: </string>
     <string name="noactivity">Activity not entered</string>
     <string name="emptycalendertext">No scheduled lectures for this week.</string>
+   
+    
+    <string name="instagram_client_ID">459cd68d82d642bfb73678ceb77290cd</string>
+    <string name="instagram_client_secret">7a0733d8b4f64d4eb0a5e0394cae5074</string>
+    
+    
+    
 
 </resources>
