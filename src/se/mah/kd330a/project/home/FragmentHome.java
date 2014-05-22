@@ -1,13 +1,20 @@
 package se.mah.kd330a.project.home;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import net.fortuna.ical4j.data.ParserException;
 import se.mah.kd330a.project.adladok.model.Constants;
@@ -29,9 +36,13 @@ import se.mah.kd330a.project.R;
 import android.app.ActionBar;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.text.method.LinkMovementMethod;
@@ -39,6 +50,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -47,7 +60,7 @@ import android.widget.Toast;
 
 public class FragmentHome extends Fragment implements FeedManager.FeedManagerDoneListener, Observer
 {
-
+	ImageView InstagramView;
 	private NextClassWidget nextClass;
 	private ViewGroup rootView;
 	private RSSFeed newsFeed;
@@ -58,13 +71,20 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 	private String TAG ="FragmentHome";
 	private String actionBarTitle[];
 	private boolean nbrOfClasses;
+	/*private static final String AUTHURL = "https://api.instagram.com/oauth/authorize/"; //Used for Authentication.
+	private static final String TOKENURL ="https://api.instagram.com/oauth/access_token=42571979.1fb234f.485cfc1c30fc42ea995f0901967e76e9 HTTP/1.1";//Used for getting token and User details.
+	public static final String APIURL = "https://api.instagram.com/v1/tags/MAHStudent/media/recent";//Used to specify the API version which we are going to use.
+	public String CALLBACKURL = "ig459cd68d82d642bfb73678ceb77290cd://authorize";//The callback url that we have used while registering the application.
+	public String client_id = "459cd68d82d642bfb73678ceb77290cd";
+	public String client_secret = "7a0733d8b4f64d4eb0a5e0394cae5074";
+	public String token = "42571979.1fb234f.485cfc1c30fc42ea995f0901967e76e9";*/
+
 	
 	public FragmentHome()
-	{
-		
-	}
-
-	@Override
+	{}
+		   
+  
+ 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		Log.i("FragmentHome", "OnCreate: ");
@@ -84,6 +104,9 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 		{
 			Log.e("FragmentHome", "OnCreate: "+e.toString());
 		}
+		// Kör denna kod från någon life-cycle metod, t.ex. onCreate eller onActivityCreated
+		HTTPWorker test = new HTTPWorker(getActivity(), mHandler, HTTPWorker.GET_LATEST_TAGS, true);
+		test.execute("MAHstudent");
 	}
 
 	@Override
@@ -104,8 +127,48 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 		actionBarTitle = getResources().getStringArray(R.array.menu_texts);
 		getActivity().getActionBar().setTitle(actionBarTitle[0]); //Fetches "Home" from the string array
 		//Perhaps or all should be done in ScheduledFixedDelay????
+		InstagramView = (ImageView) rootView.findViewById(R.id.instagramview);
 		return rootView;
 	}
+	// Deklarera i ert fragment
+	Handler mHandler = new Handler(new InstagramHandlerCallback());
+
+	class InstagramHandlerCallback implements Handler.Callback {
+		@Override
+		public boolean handleMessage(Message msg) {
+			ArrayList<InstagramTag> tags = (ArrayList<InstagramTag>) msg
+					.getData().getSerializable("data");
+			InstagramTag tag = tags.get(0);
+			String imgUrl = tag.getStandardResolution();
+			new DownloadImageTask(InstagramView).execute(imgUrl);
+			return true;
+		}
+	}
+	private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+	    ImageView bmImage;
+
+	    public DownloadImageTask(ImageView bmImage) {
+	        this.bmImage = bmImage;
+	    }
+
+	    protected Bitmap doInBackground(String... urls) {
+	        String urldisplay = urls[0];
+	        Bitmap mIcon11 = null;
+	        try {
+	            InputStream in = new java.net.URL(urldisplay).openStream();
+	            mIcon11 = BitmapFactory.decodeStream(in);
+	        } catch (Exception e) {
+	            Log.e("Error", e.getMessage());
+	            e.printStackTrace();
+	        }
+	        return mIcon11;
+	    }
+
+	    protected void onPostExecute(Bitmap result) {
+	        bmImage.setImageBitmap(result);
+	    }
+	}
+
 
 	/**private void setNewsFeedMah(ViewGroup rootView)
 	{
