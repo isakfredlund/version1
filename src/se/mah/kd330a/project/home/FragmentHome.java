@@ -69,13 +69,7 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 	private String TAG ="FragmentHome";
 	private String actionBarTitle[];
 	private boolean nbrOfClasses;
-	/*private static final String AUTHURL = "https://api.instagram.com/oauth/authorize/"; //Used for Authentication.
-	private static final String TOKENURL ="https://api.instagram.com/oauth/access_token=42571979.1fb234f.485cfc1c30fc42ea995f0901967e76e9 HTTP/1.1";//Used for getting token and User details.
-	public static final String APIURL = "https://api.instagram.com/v1/tags/MAHStudent/media/recent";//Used to specify the API version which we are going to use.
-	public String CALLBACKURL = "ig459cd68d82d642bfb73678ceb77290cd://authorize";//The callback url that we have used while registering the application.
-	public String client_id = "459cd68d82d642bfb73678ceb77290cd";
-	public String client_secret = "7a0733d8b4f64d4eb0a5e0394cae5074";
-	public String token = "42571979.1fb234f.485cfc1c30fc42ea995f0901967e76e9";*/
+
 
 	
 	public FragmentHome()
