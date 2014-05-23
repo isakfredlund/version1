@@ -33,21 +33,6 @@ public class NextClassWidget {
 
 	}
 
-	public void generateSampleCourse() {
-		this.courseName = "Att utvecklas som hand- ledare inom odontologisk utbildning";
-		this.courseId = "KD330a";
-		this.location = "B310, K2B212, K203A4...";
-		this.startTime = "10:15";
-		this.endTime = "12:00";
-		this.date = "Today";
-		this.courseName2 = "Att utvecklas som hand";
-		this.courseId2 = "KD330a2";
-		this.location2 = "B310, K2B212,...";
-		this.startTime2 = "11:15";
-		this.endTime2 = "12:00";
-		this.date2 = "Today2";
-
-	}
 
 	public boolean anyClassesToday() {
 		if (!Me.getInstance().getUserID().isEmpty()) {
@@ -80,13 +65,12 @@ public class NextClassWidget {
 	private boolean setData() {
 		if (items.size()==1) {
 			nbrOfItems=1;
-			//setCourseName(items.get(0).getCourseName());
 			setLocation(items.get(0).getRoomCode());
 			setStartTime(items.get(0).getStartTime());
 			setEndTime(items.get(0).getEndTime());
 			setDate(items.get(0).getShortWeekDay() + ", " + items.get(0).getDateAndTime2());
 			setCourseId(items.get(0).getCourseID());
-			setCourseName(Me.getInstance().getCourse(getCourseId()).getDisplaynameEn()); //Not so pretty
+			setCourseName(Me.getInstance().getCourse(getCourseId()).getDisplaynameEn()); 
 			return true;
 		} else if (items.size()>1){
 			nbrOfItems=2;
@@ -95,13 +79,13 @@ public class NextClassWidget {
 			setEndTime(items.get(0).getEndTime());
 			setDate(items.get(0).getShortWeekDay() + ", " + items.get(0).getDateAndTime2());
 			setCourseId(items.get(0).getCourseID());
-			setCourseName(Me.getInstance().getCourse(getCourseId()).getDisplaynameEn()); //Not so pretty
+			setCourseName(Me.getInstance().getCourse(getCourseId()).getDisplaynameEn());
 			setLocation2(items.get(1).getRoomCode());
 			setStartTime2(items.get(1).getStartTime());
 			setEndTime2(items.get(1).getEndTime());
 			setDate2(items.get(1).getShortWeekDay() + ", " + items.get(1).getDateAndTime2());
 			setCourseId2(items.get(1).getCourseID());
-			setCourseName2(Me.getInstance().getCourse(getCourseId2()).getDisplaynameEn()); //Not so pretty
+			setCourseName2(Me.getInstance().getCourse(getCourseId2()).getDisplaynameEn()); 
 			return true;
 		}else{	
 			Log.e(getClass().toString(), "item list is empty");

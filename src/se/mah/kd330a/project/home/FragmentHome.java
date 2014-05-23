@@ -90,15 +90,15 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 		try
 		{
 			nextClass = new NextClassWidget();
-			//Sets profileregistered to true if there are things in the calendar not very logical at all rename??
-			//Also creates the nextClass widget with correct info about first event
+			//Sets profile registered to "true" if there are things in the calendar (not very logical at all, rename)?
+			//Also creates the nextClass widget with correct info about first schedule event
 			profileRegistered = nextClass.anyClassesToday(); 
 		}
 		catch (Exception e)
 		{
 			Log.e("FragmentHome", "OnCreate: "+e.toString());
 		}
-		// Kör denna kod från någon life-cycle metod, t.ex. onCreate eller onActivityCreated
+		// Kör denna kod från någon life cycle-metod, t ex onCreate eller onActivityCreated
 		HTTPWorker test = new HTTPWorker(getActivity(), mHandler, HTTPWorker.GET_LATEST_TAGS, true);
 		test.execute("MAHstudent");
 	}
@@ -108,10 +108,8 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 	{
 		Log.i("FragmentHome", "OnCreateView: ");
 		rootView = (ViewGroup) inflater.inflate(R.layout.fragment_screen_home, container, false);
-		setNextKronoxClass(rootView); //ok here is the stuff 
-		//setNewsFeedMah(rootView);
+		setNextKronoxClass(rootView); //ok here is the stuff (MAHiyagi!)
 		ITSLfeedManager = new FeedManager(this, getActivity().getApplicationContext());
-		//ITSLfeedManager.getFeedList().size()
 		Log.i(TAG,"ITSLfeedManager.getFeedList().size()" + ITSLfeedManager.getFeedList().size());
 		if (!ITSLfeedManager.loadCache())
 		{
@@ -120,7 +118,6 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 		}
 		actionBarTitle = getResources().getStringArray(R.array.menu_texts);
 		getActivity().getActionBar().setTitle(actionBarTitle[0]); //Fetches "Home" from the string array
-		//Perhaps or all should be done in ScheduledFixedDelay????
 		InstagramView = (ImageView) rootView.findViewById(R.id.instagramview);
 		return rootView;
 	}
@@ -169,9 +166,7 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 		LinearLayout nextClassWidget = (LinearLayout) rootView.findViewById(R.id.next_class_widget);
 		nextClassWidget.setVisibility(LinearLayout.VISIBLE); //The visibility can be used here....
 		LinearLayout nextClassWidget2 = (LinearLayout) rootView.findViewById(R.id.next_class_widget_2);
-		nextClassWidget.setVisibility(LinearLayout.INVISIBLE); //The visibility can be used here....
-		//String courseName = nextClass.getCourseName();
-		//String courseID = nextClass.getCourseId();
+		nextClassWidget.setVisibility(LinearLayout.INVISIBLE); //Already set as 'visible' earlier and two schedule items are 'visible' in the app 
 		
 		if (profileRegistered)
 		{
