@@ -21,7 +21,7 @@
         <LinearLayout
             android:id="@+id/content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="373dp"
             android:background="@color/grey_middle"
             android:orientation="vertical" >
 
@@ -38,7 +38,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="190dp"
                     android:orientation="horizontal" >
 
                     <View
@@ -125,6 +125,7 @@
                     android:background="@color/grey" >
                 </View>
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/next_class_widget_2"
                 android:layout_width="match_parent"
@@ -138,7 +139,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="190dp"
                     android:orientation="horizontal" >
 
                     <View
@@ -246,10 +247,10 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:src="@drawable/its_icon" />
-
             </RelativeLayout>
 
-            <LinearLayout
+            <RelativeLayout
+                android:id="@+id/RelativeLayout1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
@@ -258,25 +259,40 @@
                 android:background="@color/white"
                 android:orientation="vertical" >
 
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="240dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="#MAHStudent"
-                    android:textSize="32dp" />
-
                 <ImageView
                     android:id="@+id/instagramview"
-                    android:layout_width="498dp"
-                    android:layout_height="498dp"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:layout_below="@+id/imageView2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="18dp"
                     android:layout_weight="0.67"
-                    android:src="@drawable/insta_icon_home" />
-            </LinearLayout>
+                    android:background="@color/black"
+                    android:padding="10dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/loading" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/instagramview"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/insta_icon_graphic" />
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/instagramview"
+                    android:layout_centerHorizontal="true"
+                    android:text="#MAHStudent"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
             <!-- </com.handmark.pulltorefresh.library.PullToRefreshScrollView> -->
         </LinearLayout>
-
     </ScrollView>
- 
+
 </LinearLayout>
