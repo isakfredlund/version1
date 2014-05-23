@@ -51,13 +51,11 @@ public class MainActivity extends FragmentActivity implements Observer{
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
-    private String urlNewsFeed = "http://www.mah.se/english/News/";
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     private String[] mMenuTitles;
     private TypedArray mMenuIcons;
     private TypedArray mMenuColors;
-    public RSSFeed newsFeed;
     private final String TAG = "MainActivity";
     private final int HOME = 0;
 	private final int SCHEDULE = 1;
@@ -150,12 +148,6 @@ public class MainActivity extends FragmentActivity implements Observer{
     	Log.i(TAG,"onDestroy Scheduled updater thread stopped");
     	 Me.getInstance().stopUpdate();
     }
-    
-    public RSSFeed getRssNewsFeed() {
-    	return newsFeed;
-    }
-    
-    
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -273,13 +265,6 @@ public class MainActivity extends FragmentActivity implements Observer{
     public void toFind(View view) {
 		selectItem(this.FIND);
 	}
-    
-    public void toNewsFeedOnWeb(View view) {
-    	Uri uri = Uri.parse(urlNewsFeed);
-    	Intent launchBrowser = new Intent(Intent.ACTION_VIEW,
-    	uri);
-    	startActivity(launchBrowser);
-    }
 
 	@Override
 	public void update(Observable observable, Object data) {
@@ -292,9 +277,6 @@ public class MainActivity extends FragmentActivity implements Observer{
 		break;
 		case COURSES_and_AD:
 			Log.i(TAG,"Data: COURSES");
-		break;
-		case MAHNEWS:
-			Log.i(TAG,"Data: MAHNEWS");
 		break;
 		case ALL:
 			Log.i(TAG,"Data: ALL");

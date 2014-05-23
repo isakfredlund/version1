@@ -27,7 +27,6 @@ public class ScheduleFixedDelay extends Observable implements Runnable  {
 	public enum UpdateType {
 		   KRONOX, 
 		   COURSES_and_AD,
-		   MAHNEWS,
 		   ALL
 		}
 	private Context c;
@@ -43,45 +42,6 @@ public class ScheduleFixedDelay extends Observable implements Runnable  {
 			String[] files = c.fileList();
 			for (String s : files) {
 				Log.d(TAG,"Filename: "+s);
-			}
-			//MAHNEWS writes MAHnews to file and notifies listeners
-			try{
-				DOMParser myParser = new DOMParser();
-				RSSFeed feedFromNet = myParser.parseXml(Constants.mahNewsAdress);
-				//check if changed
-				File file = new File(c.getFilesDir(), Constants.mahNewsSavedFileName);
-				if (file.exists()){
-					FileInputStream fis = c.openFileInput(Constants.mahNewsSavedFileName);
-					ObjectInputStream in = new ObjectInputStream(fis); 
-					RSSFeed savedFeed = (RSSFeed) in.readObject();
-					in.close();
-					fis.close();
-					
-					if(!savedFeed.getItem(0).getTitle().equalsIgnoreCase(feedFromNet.getItem(0).getTitle())){
-						FileOutputStream fout = c.openFileOutput(Constants.mahNewsSavedFileName, Context.MODE_PRIVATE);
-						ObjectOutputStream out = new ObjectOutputStream(fout);
-						out.writeObject(feedFromNet);
-						out.close();
-						fout.close();
-						setChanged();
-						notifyObservers(UpdateType.MAHNEWS);
-						Log.i(TAG,"MAHNEWS Updates news and found new item in news feed ");
-					}else{
-						Log.i(TAG,"MAHNEWS Nothing to update already uptodate ");
-					}
-				}else{
-					FileOutputStream fout = c.openFileOutput(Constants.mahNewsSavedFileName, Context.MODE_PRIVATE);
-					ObjectOutputStream out = new ObjectOutputStream(fout);
-					out.writeObject(feedFromNet);
-					out.close();
-					fout.close();
-					setChanged();
-					notifyObservers(UpdateType.MAHNEWS);
-					Log.i(TAG,"MAHNEWS No file saved locally saving new file");
-				}
-			}catch(Exception e1){
-				Log.i(TAG,e1.toString());
-			
 			}
 			// updates from AD and LADOK notifies listeners
 			if (ADUpdateCount >=10){

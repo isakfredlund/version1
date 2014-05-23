@@ -17,7 +17,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import net.fortuna.ical4j.data.ParserException;
-import se.mah.kd330a.project.adladok.model.Constants;
 import se.mah.kd330a.project.adladok.model.Course;
 import se.mah.kd330a.project.adladok.model.Me;
 import se.mah.kd330a.project.adladok.model.ScheduleFixedDelay.UpdateType;
@@ -63,7 +62,6 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 	ImageView InstagramView;
 	private NextClassWidget nextClass;
 	private ViewGroup rootView;
-	private RSSFeed newsFeed;
 	private ObjectInputStream in = null;
 	private FileInputStream fis = null;
 	private boolean profileRegistered = false;
@@ -171,44 +169,6 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 	    }
 	}
 
-
-	/**private void setNewsFeedMah(ViewGroup rootView)
-	{
-		Log.i(TAG,"setNewsFeedMah: ");
-		try
-		{
-			fis = getActivity().openFileInput(Constants.mahNewsSavedFileName);
-			in = new ObjectInputStream(fis);
-			newsFeed = (RSSFeed) in.readObject();
-			in.close();
-			fis.close();
-			Log.i(TAG, "Items in MAHNews feed: "+ Integer.toString(newsFeed.getItemCount()));
-		}
-		catch (Exception ex)
-		{
-			Log.e(TAG, "Error in get method");
-		}
-
-		try
-		{
-			LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-			LinearLayout newsFeedMahWidget = (LinearLayout) rootView.findViewById(R.id.news_feed_widget);
-			for (int i = 0; i < 1; i++)
-			{
-				TextView title = (TextView) newsFeedMahWidget.findViewById(R.id.text_latest_news_heading);
-				title.setText(newsFeed.getItem(i).getTitle());
-				TextView description = (TextView) newsFeedMahWidget.findViewById(R.id.text_latest_news_description);
-				description.setText(newsFeed.getItem(i).getDescription());
-
-			}
-		}
-		catch (Exception ex)
-		{
-			Log.e(TAG, "Error in get method");
-		}
-
-	}**/
-
 	private void setNextKronoxClass(ViewGroup rootView)
 	{
 		
@@ -311,11 +271,6 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 					break;
 				}
 			}	
-			//((TextView)widget.findViewById(R.id.text_itsl_title)).setText(a.getArticleHeader());
-			/*((TextView)widget.findViewById(R.id.text_itsl_date)).setText(a.getArticleDate());*/
-			//((TextView)widget.findViewById(R.id.text_itsl_content)).setText(a.getArticleText());
-			/*((View)widget.findViewById(R.id.home_itsl1)).setBackgroundColor(color);*/
-			//((View)widget.findViewById(R.id.home_itsl2)).setBackgroundColor(color);
 		}
 		catch(Exception e)
 		{
@@ -348,15 +303,6 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 			});
 			
 			break;
-		/**case MAHNEWS:
-			getActivity().runOnUiThread(new Runnable(){
-				@Override
-				public void run() {
-					setNewsFeedMah(rootView);
-				}
-				
-			});
-			break;**/
 		default:
 			break;
 		}
