@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@color/grey_middle"
     android:orientation="vertical"
     android:paddingTop="10dp" >
 
@@ -243,7 +244,6 @@
                     android:id="@+id/imageView1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:src="@drawable/its_icon" />
@@ -252,7 +252,7 @@
             <RelativeLayout
                 android:id="@+id/RelativeLayout1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="400dp"
                 android:layout_marginBottom="6dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
@@ -260,39 +260,42 @@
                 android:orientation="vertical" >
 
                 <ImageView
-                    android:id="@+id/instagramview"
-                    android:layout_width="250dp"
-                    android:layout_height="250dp"
-                    android:layout_below="@+id/imageView2"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="18dp"
-                    android:layout_weight="0.67"
-                    android:background="@color/black"
-                    android:padding="10dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/loading" />
-
-                <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/instagramview"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="16dp"
-                    android:src="@drawable/insta_icon_graphic" />
+                    android:layout_width="fill_parent"
+                    android:layout_height="340dp"
+                    android:background="@color/grey_middle"
+                    android:src="@drawable/instagram_frame" />
 
                 <TextView
                     android:id="@+id/textView1"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/instagramview"
+                    android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginTop="46dp"
+                    android:background="#666666"
                     android:text="#MAHStudent"
+                    android:textColor="@color/white"
                     android:textSize="20sp" />
+                
+					<ImageView
+                    android:id="@+id/instagramview"
+                    android:layout_width="255dp"
+                    android:layout_height="255dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_weight="0.67"
+                    android:padding="10dp"
+                    
+                    android:scaleType="centerInside"
+                    android:src="@drawable/loading" />
+
+                
 
             </RelativeLayout>
             <!-- </com.handmark.pulltorefresh.library.PullToRefreshScrollView> -->
         </LinearLayout>
+
     </ScrollView>
 
 </LinearLayout>
