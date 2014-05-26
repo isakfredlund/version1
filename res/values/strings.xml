@@ -42,6 +42,16 @@
         <item>7a0733d8b4f64d4eb0a5e0394cae5074</item>
     </string-array>
     
+    <array name="images_links">
+        <item>@drawable/tomikon</item>
+        <item>@drawable/ic_student</item>
+        <item>@drawable/ic_it</item>
+        <item>@drawable/ic_library_new</item>
+        <item>@drawable/ic_housing_new</item>
+        <item>@drawable/ic_career_new</item>
+        <item>@drawable/ic_social_new</item> 
+        <item>@drawable/tomikon</item>
+    </array>
     
     <string-array name ="links_options">
        <item>"Categories"</item>

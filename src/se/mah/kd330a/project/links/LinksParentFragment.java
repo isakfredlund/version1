@@ -34,7 +34,7 @@ public class LinksParentFragment extends Fragment {
 	    phoneNumbers.add(getResources().getStringArray(R.array.it_nr));
         phoneNumbers.add(getResources().getStringArray(R.array.library_nr));
 		subTitles = getResources().getStringArray(R.array.links_list_sub_options);
-		//images = getResources().obtainTypedArray(R.array.images_links);
+		images = getResources().obtainTypedArray(R.array.images_links);
 	    linkOptions = getResources().getStringArray(R.array.links_options);
 	    titleArrayList.add(getResources().getStringArray(R.array.links_list_options));
 		titleArrayList.add(getResources().getStringArray(R.array.student_at_mah));
