@@ -1,36 +1,59 @@
 package se.mah.kd330a.project.schedule.view;
 
 import java.util.ArrayList;
-import android.widget.ExpandableListView;
-import android.widget.ImageView;
+import java.util.concurrent.ExecutionException;
+
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+
 import se.mah.kd330a.project.R;
+import se.mah.kd330a.project.adladok.model.Constants;
 import se.mah.kd330a.project.adladok.model.Course;
+import se.mah.kd330a.project.adladok.model.FragmentCallback;
 import se.mah.kd330a.project.adladok.model.Me;
 import se.mah.kd330a.project.find.data.RoomDbHandler;
 import se.mah.kd330a.project.find.view.FragmentFloorMap;
 import se.mah.kd330a.project.find.view.FragmentResult;
+import se.mah.kd330a.project.framework.MainActivity;
 import se.mah.kd330a.project.schedule.model.ScheduleItem;
 import se.mah.kd330a.project.schedule.model.ScheduleWeek;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.ExpandableListView.OnGroupExpandListener;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class FragmentScheduleWeek extends Fragment implements OnChildClickListener {
 
-	// private static ArrayList<ScheduleItem> _scheduleItemsThisWeek;
-	private final String TAG = "FragmentScheduleWeek";
-	
+	/**
+	 * This is the brain for the expandable list part of the schedule. 
+	 * It includes the RefreshLayout(Pull down to update), onClicks, expands lectures etc. 
+	 */
+
+	private final String 		TAG = "FragmentScheduleWeek";
+	private ScheduleWeek 		scheduleWeek;
+	private SwipeRefreshLayout 	swipeRefreshLayout;
+	private TextView lector;
+
 	public static FragmentScheduleWeek newInstance(ScheduleWeek scheduleWeek,int position) {
 		FragmentScheduleWeek f = new FragmentScheduleWeek();
 		Bundle b = new Bundle();
@@ -39,30 +62,69 @@ public class FragmentScheduleWeek extends Fragment implements OnChildClickListen
 		return f;
 	}
 
-	ScheduleWeek _scheduleWeek;
+
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		_scheduleWeek = (ScheduleWeek) getArguments().getSerializable("ScheduleWeek");
-
+		scheduleWeek = (ScheduleWeek) getArguments().getSerializable("ScheduleWeek");
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 		ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_schedule_expendable_list_view, container,false);
-		TextView v = (TextView) rootView.findViewById(R.id.schudule_week_number);
-		v.setText("Week " + (_scheduleWeek.getWeekNumber()));
-		ExpandableListView elv = (ExpandableListView) rootView.findViewById(R.id.expandable_list);
-		TextView empty = (TextView) rootView.findViewById(R.id.emptytw);
-		elv.setEmptyView(empty);
+		final ExpandableListView elv = (ExpandableListView) rootView.findViewById(R.id.expandable_list);
+		elv.setEmptyView(rootView.findViewById(R.id.emptytw));
 		elv.setAdapter(new ExpandableListViewAdapter(getActivity()));
 		elv.setOnChildClickListener(this);
+		elv.setOnGroupExpandListener(new OnGroupExpandListener() {
+			int previousGroup = -1;
+
+			@Override
+			public void onGroupExpand(int groupPosition) {
+				if(groupPosition != previousGroup)
+					elv.collapseGroup(previousGroup);
+					previousGroup = groupPosition;
+			}
+		});
+
+		// swipeRefreshLayout this code activates the part for pulling down to update the schedule (It activates all data in the app)
+		swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container);
+		swipeRefreshLayout.setColorScheme(R.color.blue, R.color.green, R.color.orange, R.color.red_mah);
+		swipeRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+			@Override
+			public void onRefresh() {
+				Me.getInstance().startRefresher(new FragmentCallback(){
+					@Override
+					public void onRefreshCompleted() {
+						swipeRefreshLayout.setRefreshing(false);
+						((MainActivity)getActivity()).refreshCurrent();
+					}
+
+				}, getActivity());
+			}
+		});
+		
+		// This fixed a bug where you couldn't scroll up after scrolling down without updating the app.
+		// It disables the swipeRefreshLayout if you aren't scrolled all the way to the top. 
+		elv.setOnScrollListener(new AbsListView.OnScrollListener() {
+			@Override
+			public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+				if (!elv.canScrollVertically(-100)){  
+					swipeRefreshLayout.setEnabled(true);
+				}
+				else{
+					swipeRefreshLayout.setEnabled(false);
+				}
+			}
+			@Override
+			public void onScrollStateChanged(AbsListView view, int scrollState) {
+			}
+		});
 		return rootView;
-	}
+	} 
 
 	public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
-
 		String lastDate = null;
 		String location;	
 		public ExpandableListViewAdapter(Context context) {	
@@ -71,7 +133,7 @@ public class FragmentScheduleWeek extends Fragment implements OnChildClickListen
 
 		@Override
 		public int getGroupCount() {
-			return _scheduleWeek.getScheduleItems().size();
+			return scheduleWeek.getScheduleItems().size();
 		}
 
 		@Override
@@ -81,13 +143,13 @@ public class FragmentScheduleWeek extends Fragment implements OnChildClickListen
 
 		@Override
 		public Object getGroup(int i) {
-			return _scheduleWeek.getScheduleItems().get(i);
+			return scheduleWeek.getScheduleItems().get(i);
 		}
 
 		@Override
 		public Object getChild(int i, int i1) {
 			ArrayList<String> childs = new ArrayList<String>();
-			childs.add(_scheduleWeek.getScheduleItems().get(i).getTeacherID());
+			childs.add(scheduleWeek.getScheduleItems().get(i).getTeacherId());
 			return childs;
 		}
 
@@ -113,9 +175,9 @@ public class FragmentScheduleWeek extends Fragment implements OnChildClickListen
 			String currentDate = currentSI.getDateAndTime2();
 			String previousDate = "dummyDate";
 			ScheduleItem previousSI = null ;
-			String courseID = currentSI.getCourseID();
+			String courseID = currentSI.getCourseId();
 			Course course = Me.getInstance().getCourse(courseID);
-			
+
 			String courseName ="Missing";
 			int color = 0;
 			if (course!=null){
@@ -125,7 +187,7 @@ public class FragmentScheduleWeek extends Fragment implements OnChildClickListen
 				courseName = courseID;
 				color = getResources().getColor(R.color.red_mah);
 			}
-			
+
 			if(groupPosition!=0){
 				previousSI=(ScheduleItem) getGroup(groupPosition-1);
 				previousDate=previousSI.getDateAndTime2();
@@ -148,6 +210,9 @@ public class FragmentScheduleWeek extends Fragment implements OnChildClickListen
 				View calendarColorFrame2 = (View) convertView.findViewById(R.id.calendarColorFrame2);
 				calendarColorFrame1.setBackgroundColor(color);
 				calendarColorFrame2.setBackgroundColor(color);
+				
+
+				
 			} else {  //The calendar item not first
 				convertView = infalInflater.inflate(R.layout.schedule_list_group, null);
 				TextView courseNameTextView = (TextView) convertView.findViewById(R.id.list_course_name);
@@ -163,7 +228,9 @@ public class FragmentScheduleWeek extends Fragment implements OnChildClickListen
 				calendarColorFrame1.setBackgroundColor(color);
 				calendarColorFrame2.setBackgroundColor(color);
 			}
-
+			if(isExpanded){
+				convertView.findViewById(R.id.icPointer).setVisibility(View.INVISIBLE); 
+			}
 			return convertView;
 
 		}
@@ -175,18 +242,17 @@ public class FragmentScheduleWeek extends Fragment implements OnChildClickListen
 				LayoutInflater infalInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				convertView = infalInflater.inflate(R.layout.schedule_list_item, null);
 			}
-			
+
 			ScheduleItem currentSI = (ScheduleItem) getGroup(groupPosition);
 			location = currentSI.getRoomCode();
-			TextView lector = (TextView) convertView.findViewById(R.id.list_course_child_lector);
+			lector = (TextView) convertView.findViewById(R.id.list_course_child_lector);
 			//HERE enter activity
 			TextView activity = (TextView)convertView.findViewById(R.id.list_course_child_activity);
 			Button btnFind = (Button) convertView.findViewById(R.id.findButton);
 			btnFind.setOnClickListener(new OnClickListener() {
-				
+				// onClick for the "Find Room" button.
 				@Override
 				public void onClick(View v) {
-					// TODO Auto-generated method stub
 					try {
 						String[] locs = location.split(" ");
 						RoomDbHandler dbHandler = new RoomDbHandler(getActivity());
@@ -202,28 +268,98 @@ public class FragmentScheduleWeek extends Fragment implements OnChildClickListen
 							Toast.makeText(getActivity(), getString(R.string.find_db_error), Toast.LENGTH_LONG).show();
 					}
 					catch (Exception e) {
-						
+
 					}
 				}
 			});
-			
-			String courseID = currentSI.getCourseID();
+
+			String courseID = currentSI.getCourseId();
 			Course course = Me.getInstance().getCourse(courseID);
-			String courseName ="Missing";
+			
+			String lectorID = childTexts.get(0);
+			/*String retrieveTeacherRealName = "";
+			try {
+				retrieveTeacherRealName = new RetrieveTeacherRealName().execute(childTexts.get(0)).get();
+				Log.d("retrieveTeacherRealName", retrieveTeacherRealName);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			*/String courseName ="Missing";
 			int color = 0;
-			if (course!=null){
+			if (course != null){
 				courseName = course.getDisplaynameEn();
 				color = Me.getInstance().getCourse(courseID).getColor();
 			}
-			lector.setText(childTexts.get(0));
+			
+			/*if(retrieveTeacherRealName != null) {
+				lector.setText(retrieveTeacherRealName);
+			} else {
+				lector.setText(lectorID);
+			}*/
 			activity.setText(currentSI.getDescription());
 			ImageView calendarColorFrameC1 = (ImageView) convertView.findViewById(R.id.calendarColorFrame1);
 			ImageView calendarColorFrameC2= (ImageView) convertView.findViewById(R.id.calendarColorFrame2);
 			calendarColorFrameC1.setBackgroundColor(color);
 			calendarColorFrameC2.setBackgroundColor(color);
+			
+			
+			
+			try {
+				new RetrieveTeacherReal().execute(childTexts.get(0)).get();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+
 			return convertView;
 		}
-		
+		class RetrieveTeacherReal extends AsyncTask<String, Integer, String> {			
+			Object objectResult;
+			@Override
+			protected void onPreExecute() {
+				// TODO Auto-generated method stub
+				super.onPreExecute();
+				Log.d("RetrieveTeacherRealName", "Starting to fetch Teacher Name");	
+			}
+
+			
+			protected String doInBackground(String... id) {
+				Log.d("RetrieveTeacherRealName", "Downloading Teacher Name");
+				objectResult="";
+				try {
+					SoapObject getTeacherId = new SoapObject(Constants.NAMESPACE, "getTeacherName");
+					getTeacherId.addProperty("id", id[0]);
+					SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+					envelope.dotNet=true;
+					envelope.setOutputSoapObject(getTeacherId);
+					HttpTransportSE androidHttpTransport = new HttpTransportSE(Constants.URL);
+					androidHttpTransport.call(Constants.NAMESPACE + "getTeacherName", envelope);
+					objectResult = (Object)envelope.getResponse();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				return objectResult.toString();
+			}
+
+			
+			protected void onPostExecute(String result) {
+				lector.setText(result);
+				Log.d("RetrieveTeacherRealName", objectResult.toString());
+				Log.d("RetrieveTeacherRealName", ""+result);
+
+				Log.d("RetrieveTeacherRealName", "Done");
+			}
+		}
+
 		private void startNavigation(String roomNr) {
 			Fragment fragment = new FragmentResult();
 			Bundle args = new Bundle();
@@ -236,7 +372,7 @@ public class FragmentScheduleWeek extends Fragment implements OnChildClickListen
 			fragmentTrans.addToBackStack(null);
 			fragmentTrans.commit();
 		}
-		
+
 		private void showFloorMap(String floorMapCode) {
 			Fragment fragment = new FragmentFloorMap();
 			Bundle args = new Bundle();
@@ -248,7 +384,7 @@ public class FragmentScheduleWeek extends Fragment implements OnChildClickListen
 			fragmentTrans.addToBackStack(null);
 			fragmentTrans.commit();		
 		}
-		
+
 		@Override
 		public boolean isChildSelectable(int i, int i1) {
 			return true;
@@ -256,11 +392,11 @@ public class FragmentScheduleWeek extends Fragment implements OnChildClickListen
 
 
 	}
-
+	
+	// Is called when an expanded lecture is pressed. 
 	@Override
 	public boolean onChildClick(ExpandableListView parent, View v,
 			int groupPosition, int ChildPosition, long id) {
-		// TODO Auto-generated method stub
 		return parent.collapseGroup(groupPosition);
 	}
 }

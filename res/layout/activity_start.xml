@@ -41,7 +41,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginTop="8dp"
             android:gravity="center_horizontal"
-            android:text="This is Malmö University&apos;s Student App. Keep updated and find your way around campus"
+            android:text="This is Malmö University's Student App. Keep updated and find your way around campus"
             android:textColor="#ffffff"
             android:textSize="16dp"
             android:textStyle="normal" />
@@ -59,7 +59,8 @@
             android:hint="Mah login"
             android:inputType="textPersonName"
             android:lines="1"
-            android:padding="8dp" />
+            android:padding="8dp"
+            android:text="testUser2" />
 
         <EditText
             android:id="@+id/editText2"
@@ -73,7 +74,8 @@
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword"
-            android:padding="8dp" />
+            android:padding="8dp"
+            android:text="testUser2" />
 
         <LinearLayout
             android:id="@+id/linearLayout1"
@@ -129,6 +131,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="104dp" />
+
         </RelativeLayout>
     </LinearLayout>
 

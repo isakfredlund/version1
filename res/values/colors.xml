@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <color name="black">#151515</color>
     <color name="red">#C1002B</color>
     <color name="red_mah">#AE0817</color>
@@ -14,5 +13,5 @@
     <color name="orange">#FF6C34</color>
     <color name="blue">#009FE8</color>
     <color name="white">#FFFFFF</color>
-
+    <color name="purple">#9C22A8</color>
 </resources>

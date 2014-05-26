@@ -2,34 +2,34 @@ package se.mah.kd330a.project.home;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
 import java.io.ObjectInputStream;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Observable;
-import java.util.Observer;
+
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import net.fortuna.ical4j.data.ParserException;
+
+import se.mah.kd330a.project.R;
+import se.mah.kd330a.project.adladok.model.Constants;
+
 import se.mah.kd330a.project.adladok.model.Course;
 import se.mah.kd330a.project.adladok.model.Me;
-import se.mah.kd330a.project.adladok.model.ScheduleFixedDelay.UpdateType;
 import se.mah.kd330a.project.framework.MainActivity;
-//import com.handmark.pulltorefresh.library.PullToRefreshBase;
-//import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
-//import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import se.mah.kd330a.project.home.data.RSSFeed;
 import se.mah.kd330a.project.itsl.Article;
 import se.mah.kd330a.project.itsl.FeedManager;
-import se.mah.kd330a.project.itsl.ListPagerAdapter;
 import se.mah.kd330a.project.schedule.data.KronoxCalendar;
 import se.mah.kd330a.project.schedule.data.KronoxReader;
+
 import se.mah.kd330a.project.schedule.view.FragmentScheduleWeekPager;
 import se.mah.kd330a.project.R;
 import android.app.ActionBar;
@@ -39,25 +39,27 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.AsyncTask;
+
+import android.app.Activity;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-public class FragmentHome extends Fragment implements FeedManager.FeedManagerDoneListener, Observer
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+
+public class FragmentHome extends Fragment implements FeedManager.FeedManagerDoneListener
 {
 	ImageView InstagramView;
 	private NextClassWidget nextClass;
@@ -74,33 +76,32 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 	
 	public FragmentHome()
 	{}
-		   
-  
- 	@Override
+
+	
+	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		Log.i("FragmentHome", "OnCreate: ");
 		super.onCreate(savedInstanceState);
-		Me.getInstance().getObservable().addObserver(this);
-        try {
+		
+		try {
 			KronoxCalendar.createCalendar(KronoxReader.getFile(getActivity().getApplicationContext()));
 		} catch (Exception e) {
 			Log.e("FragmentHome", e.toString());
 		} 
-		try
-		{
+		try {
 			nextClass = new NextClassWidget();
 			//Sets profile registered to "true" if there are things in the calendar (not very logical at all, rename)?
 			//Also creates the nextClass widget with correct info about first schedule event
 			profileRegistered = nextClass.anyClassesToday(); 
 		}
-		catch (Exception e)
-		{
+		catch (Exception e) {
 			Log.e("FragmentHome", "OnCreate: "+e.toString());
 		}
 		// Kör denna kod från någon life cycle-metod, t ex onCreate eller onActivityCreated
 		HTTPWorker test = new HTTPWorker(getActivity(), mHandler, HTTPWorker.GET_LATEST_TAGS, true);
 		test.execute("MAHstudent");
+		
 	}
 
 	@Override
@@ -111,18 +112,21 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 		setNextKronoxClass(rootView); //ok here is the stuff (MAHiyagi!)
 		ITSLfeedManager = new FeedManager(this, getActivity().getApplicationContext());
 		Log.i(TAG,"ITSLfeedManager.getFeedList().size()" + ITSLfeedManager.getFeedList().size());
-		if (!ITSLfeedManager.loadCache())
-		{
+	    if (!ITSLfeedManager.loadCache()) {
 			ITSLfeedManager.reset();
 			ITSLfeedManager.processFeeds();
 		}
 		actionBarTitle = getResources().getStringArray(R.array.menu_texts);
 		getActivity().getActionBar().setTitle(actionBarTitle[0]); //Fetches "Home" from the string array
 		InstagramView = (ImageView) rootView.findViewById(R.id.instagramview);
+	    
+	    MainActivity.mDrawerLayout.closeDrawer(MainActivity.mDrawerList);
 		return rootView;
 	}
+	
 	// Deklarera i ert fragment
 	Handler mHandler = new Handler(new InstagramHandlerCallback());
+
 
 	class InstagramHandlerCallback implements Handler.Callback {
 		@Override
@@ -135,14 +139,16 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 			return true;
 		}
 	}
+	
+		
 	private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
 	    ImageView bmImage;
-
+	
 	    public DownloadImageTask(ImageView bmImage) {
 	        this.bmImage = bmImage;
 	    }
 
-	    protected Bitmap doInBackground(String... urls) {
+		protected Bitmap doInBackground(String... urls) {
 	        String urldisplay = urls[0];
 	        Bitmap mIcon11 = null;
 	        try {
@@ -154,7 +160,7 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 	        }
 	        return mIcon11;
 	    }
-
+		
 	    protected void onPostExecute(Bitmap result) {
 	        bmImage.setImageBitmap(result);
 	    }
@@ -234,7 +240,6 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 	}
 
 //ITSL
-	@Override
 	public void onFeedManagerDone(FeedManager fm, ArrayList<Article> articles)
 	{
 		try
@@ -267,34 +272,11 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 		}
 	}
 
-	@Override
 	public void onFeedManagerProgress(FeedManager fm, int progress, int max)
 	{
 		// TODO Auto-generated method stub
 
 	}
-
-	@Override
-	public void update(Observable observable, Object data) {
-		UpdateType type= (UpdateType)data;
-		Log.i(TAG,"updated with data: "+type);
-		switch(type){
-		case KRONOX:
-			getActivity().runOnUiThread(new Runnable(){
-				@Override
-				public void run() {
-					profileRegistered = nextClass.anyClassesToday();
-					if (profileRegistered){
-						setNextKronoxClass(rootView);
-					}	
-				}
-				
-			});
-			
-			break;
-		default:
-			break;
-		}
-		
 	}
-}
+
+

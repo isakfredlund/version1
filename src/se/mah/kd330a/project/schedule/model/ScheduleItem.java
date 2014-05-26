@@ -21,22 +21,20 @@ import net.fortuna.ical4j.model.component.VEvent;
  *  You get the summary by the command v.getSummary().getValue() in the constructor below
  *  A typical string can look like:
  *
- *  Coursegrp: KD330A-20132-62311- Sign: K3LARA Description: Project room Activity type: Okänd
- *  Programme: VGSJU13h VGSJU13h1 VGSJU13h2 Coursegrp: OM113A-20132-OM113-D16 Sign: HSANMOS Description: Övning Injektionsgivning VP. 16:1 Activity type: Okänd
+ *  Coursegrp: KD330A-20132-62311- Sign: K3LARA Description: Project room Activity type: Okï¿½ï¿½ï¿½nd
+ *  Programme: VGSJU13h VGSJU13h1 VGSJU13h2 Coursegrp: OM113A-20132-OM113-D16 Sign: HSANMOS Description: ï¿½ï¿½ï¿½vning Injektionsgivning VP. 16:1 Activity type: Okï¿½ï¿½ï¿½nd
  *  
  *  Can we make it presentable?
  */
 public class ScheduleItem implements Serializable {
-	/**
-	 * C110
-	 */
-	private static final long serialVersionUID = 2L;
+
+	private static final long SERIAL_VERSION_UID = 2L;
 	
-	SimpleDateFormat time_format = new SimpleDateFormat("HH:mm");
-	SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-	SimpleDateFormat date_format2 = new SimpleDateFormat("dd MMM, yyyy");
-	SimpleDateFormat week_day_format = new SimpleDateFormat("EEEE");
-	SimpleDateFormat short_week_day_format = new SimpleDateFormat("EE");
+	SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.US);
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.US);
+	SimpleDateFormat dateFormat2 = new SimpleDateFormat("dd MMM yyyy", Locale.US);
+	SimpleDateFormat weekDayFormat = new SimpleDateFormat("EEEE", Locale.US);
+	SimpleDateFormat shortWeekDayFormat = new SimpleDateFormat("EE", Locale.US);
 
 	private String startTime;
 	private String endTime;
@@ -46,24 +44,24 @@ public class ScheduleItem implements Serializable {
 	private String dateAndTime2;
 	private String location;
 	private String courseName;
-	private String teacherID;
+	private String teacherId;
 	private String description;
 	private boolean isDivider = false;
 	
 	
 	//Needed for color coordinating
-		private String courseID = "";
+		private String courseId = "";
 
 	// text += "Summary:" + v.getSummary().getValue() + "\n";
 	// text += "Last modified:" +
 	// date_format.format(v.getLastModified().getDate()) + "\n";
 	public ScheduleItem(VEvent v) {
-		startTime = time_format.format(v.getStartDate().getDate());
-		weekDay = week_day_format.format(v.getStartDate().getDate());
-		shortWeekDay = short_week_day_format.format(v.getStartDate().getDate());
-		dateAndTime2 = date_format2.format(v.getStartDate().getDate());
+		startTime = timeFormat.format(v.getStartDate().getDate());
+		weekDay = weekDayFormat.format(v.getStartDate().getDate());
+		shortWeekDay = shortWeekDayFormat.format(v.getStartDate().getDate());
+		dateAndTime2 = dateFormat2.format(v.getStartDate().getDate());
 
-		endTime = time_format.format(v.getEndDate().getDate());
+		endTime = timeFormat.format(v.getEndDate().getDate());
 		location = v.getLocation().getValue();
 		courseName = "PlaceHolder";
 		String summary = v.getSummary().getValue();
@@ -73,13 +71,14 @@ public class ScheduleItem implements Serializable {
 					summary.indexOf("Coursegrp: ") + 29);
 			
 			
-			courseID = summary.substring(summary.indexOf("Coursegrp: ") + 11,
+			courseId = summary.substring(summary.indexOf("Coursegrp: ") + 11,
 					summary.indexOf("Coursegrp: ") + 17); 
 			
 		}
 		if (summary.indexOf("Sign: ") != -1) {
-			teacherID = summary.substring(summary.indexOf("Sign: ") + 6,
+			teacherId = summary.substring(summary.indexOf("Sign: ") + 6,
 					summary.indexOf("Sign: ") + 12);
+			Log.d("TeacherID", teacherId);
 		}
 		if (summary.indexOf("Description: ") != -1){
 			description = summary.substring(summary.indexOf("Description: ") + 13,
@@ -87,6 +86,7 @@ public class ScheduleItem implements Serializable {
 		}
 		//Log.i("ScheduleSummary",v.getSummary().getValue());
 		//Log.i("Description: ",description);
+		
 	}
 
 	public String getDescription() {
@@ -117,8 +117,8 @@ public class ScheduleItem implements Serializable {
 		return courseName;
 	}
 
-	public String getTeacherID() {
-		return teacherID;
+	public String getTeacherId() {
+		return teacherId;
 	}
 
 	public String getWeekDay() {
@@ -133,13 +133,11 @@ public class ScheduleItem implements Serializable {
 		return dateAndTime2;
 	}
 	
-	public String getCourseID() {
-		return courseID;
+	public String getCourseId() {
+		return courseId;
 	}
 
-	public void setCourseID(String courseID) {
-		this.courseID = courseID;
+	public void setCourseId(String courseId) {
+		this.courseId = courseId;
 	}
-
-	
 }

@@ -17,10 +17,13 @@ import net.fortuna.ical4j.model.DateTime;
 import net.fortuna.ical4j.model.Dur;
 import net.fortuna.ical4j.model.Period;
 public class KronoxCalendar {
-	private String TAG ="KronoxCalendar";
-	private static Calendar calendar;
+	
+	private static final String 	TAG = KronoxCalendar.class.getName();
+	private static Calendar 		calendar;
+	
 	/**
-	 * Create the calendar object. Must be called before anything else.
+	 * This creates the calendar object from an iCal file. Must be called before everything else.
+	 * This is an imported package from iCal4j.
 	 * 
 	 * @param fin
 	 *        KronoxReader.getFile()
@@ -29,10 +32,11 @@ public class KronoxCalendar {
 	 * @throws ParserException
 	 *         Internal errors in the iCalendar file
 	 */
+
 	public static void createCalendar(FileInputStream fin) throws IOException, ParserException {
 		CalendarBuilder builder = new CalendarBuilder();
 		KronoxCalendar.calendar = builder.build(fin);
-		Log.i("KronoxCalendar", "Calendarbuilder called");	
+		Log.i(TAG, "CalendarBuilder called");	
 	}
 	
 	public static Collection<?> todaysEvents() {
@@ -42,72 +46,21 @@ public class KronoxCalendar {
 			today.set(java.util.Calendar.HOUR_OF_DAY, 0);
 			today.clear(java.util.Calendar.MINUTE);
 			today.clear(java.util.Calendar.SECOND);
-			Dur one_day = new Dur(7, 0, 0, 0);
+			Dur oneDay = new Dur(7, 0, 0, 0);
 			Rule[] rules = new Rule[1];
-			Period period = new Period(new DateTime(today.getTime()), one_day);
+			Period period = new Period(new DateTime(today.getTime()), oneDay);
 			rules[0] = new PeriodRule(period);
 			Filter filter = new Filter(rules, Filter.MATCH_ANY);
 			retval = filter.filter(calendar.getComponents(Component.VEVENT));
 		} catch (Exception e) {
 			Log.e("KronoxCalendar", e.toString());	
 		}
+	
 		return retval;					
-
-		//return filter.filter(calendar.getComponents(Component.VEVENT));
 	}
 	
-//	public static Collection<?> nextEvents() {
-//		//Find date of this monday.....
-//		java.util.Calendar today = java.util.Calendar.getInstance();
-//		final int currentDayOfWeek = (today.get(java.util.Calendar.DAY_OF_WEEK) + 7 - today.getFirstDayOfWeek()) % 7;
-//		today.add(java.util.Calendar.DAY_OF_YEAR, -currentDayOfWeek);
-//		today.set(java.util.Calendar.HOUR_OF_DAY, 0);
-//		today.clear(java.util.Calendar.MINUTE);
-//		today.clear(java.util.Calendar.SECOND);
-//		//Ok continue
-//		Dur seven_days = new Dur(7, 0, 0, 0);
-//		Rule[] rules = new Rule[1];
-//		Period period = new Period(new DateTime(today.getTime()), seven_days);
-//		rules[0] = new PeriodRule(period);
-//		Filter filter = new Filter(rules, Filter.MATCH_ANY);
-//		return filter.filter(calendar.getComponents(Component.VEVENT));
-//	}
-	
-	
-//	public static Collection<?> thisWeeksEvents() {
-//		//Find date of this monday.....
-//		java.util.Calendar thisMonday = java.util.Calendar.getInstance();
-//		final int currentDayOfWeek = (thisMonday.get(java.util.Calendar.DAY_OF_WEEK) + 7 - thisMonday.getFirstDayOfWeek()) % 7;
-//		thisMonday.add(java.util.Calendar.DAY_OF_YEAR, -currentDayOfWeek);
-//		thisMonday.set(java.util.Calendar.HOUR_OF_DAY, 0);
-//		thisMonday.clear(java.util.Calendar.MINUTE);
-//		thisMonday.clear(java.util.Calendar.SECOND);
-//		//Ok continue
-//		Dur seven_days = new Dur(7, 0, 0, 0);
-//		Rule[] rules = new Rule[1];
-//		Period period = new Period(new DateTime(thisMonday.getTime()), seven_days);
-//		rules[0] = new PeriodRule(period);
-//		Filter filter = new Filter(rules, Filter.MATCH_ANY);
-//		return filter.filter(calendar.getComponents(Component.VEVENT));
-//	}
-//	
-//	public static Collection<?> nextWeeksEvents() {
-//		java.util.Calendar nextMonday = java.util.Calendar.getInstance();
-//		final int currentDayOfWeek = (nextMonday.get(java.util.Calendar.DAY_OF_WEEK) + 7 - nextMonday.getFirstDayOfWeek()) % 7;
-//		nextMonday.add(java.util.Calendar.DAY_OF_YEAR, -currentDayOfWeek+7); //Should give next week
-//		nextMonday.set(java.util.Calendar.HOUR_OF_DAY, 0);
-//		nextMonday.clear(java.util.Calendar.MINUTE);
-//		nextMonday.clear(java.util.Calendar.SECOND);
-//		Dur seven_days = new Dur(7, 0, 0, 0);
-//		Rule[] rules = new Rule[1];
-//		Period period = new Period(new DateTime(nextMonday.getTime()), seven_days);
-//		rules[0] = new PeriodRule(period);
-//		Filter filter = new Filter(rules, Filter.MATCH_ANY);
-//		return filter.filter(calendar.getComponents(Component.VEVENT));
-//	}
-	
 	public static Collection<?> getWeeksEventsFromThisWeek(int weekFromThisWeek) {
-		//Find date of this monday........
+		// Find date of this Monday.
 		java.util.Calendar thisMonday = java.util.Calendar.getInstance();
 		final int currentDayOfWeek = (thisMonday.get(java.util.Calendar.DAY_OF_WEEK) + 7 - thisMonday.getFirstDayOfWeek()) % 7;
 		thisMonday.add(java.util.Calendar.DAY_OF_YEAR, -currentDayOfWeek +(7*weekFromThisWeek));
@@ -115,19 +68,19 @@ public class KronoxCalendar {
 		thisMonday.clear(java.util.Calendar.MINUTE);
 		thisMonday.clear(java.util.Calendar.SECOND);
 		//Ok continue
-		Dur seven_days = new Dur(7, 0, 0, 0);
+		Dur sevenDays = new Dur(7, 0, 0, 0);
 		Rule[] rules = new Rule[1];
-		Period period = new Period(new DateTime(thisMonday.getTime()), seven_days);
+		Period period = new Period(new DateTime(thisMonday.getTime()), sevenDays);
 		rules[0] = new PeriodRule(period);
+		
+		// MATCH_ALL - all rules must be matched
+		// MATCH_ANY - any rule may be matched
 		Filter filter = new Filter(rules, Filter.MATCH_ANY);
-		if (calendar!=null){
-					return filter.filter(calendar.getComponents(Component.VEVENT));
-				}else{
-					return null;
-				}
-
-		//return filter.filter(calendar.getComponents(Component.VEVENT));
+		if (calendar != null){
+			return filter.filter(calendar.getComponents(Component.VEVENT));
+		} else {
+			return null;
+		}
 	}
 }
-// MATCH_ALL - all rules must be matched
-// MATCH_ANY - any rule may be matched
+

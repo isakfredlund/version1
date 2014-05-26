@@ -69,7 +69,7 @@ public class NextClassWidget {
 			setStartTime(items.get(0).getStartTime());
 			setEndTime(items.get(0).getEndTime());
 			setDate(items.get(0).getShortWeekDay() + ", " + items.get(0).getDateAndTime2());
-			setCourseId(items.get(0).getCourseID());
+			setCourseId(items.get(0).getCourseId());
 			setCourseName(Me.getInstance().getCourse(getCourseId()).getDisplaynameEn()); 
 			return true;
 		} else if (items.size()>1){
@@ -78,13 +78,13 @@ public class NextClassWidget {
 			setStartTime(items.get(0).getStartTime());
 			setEndTime(items.get(0).getEndTime());
 			setDate(items.get(0).getShortWeekDay() + ", " + items.get(0).getDateAndTime2());
-			setCourseId(items.get(0).getCourseID());
+			setCourseId(items.get(0).getCourseId());
 			setCourseName(Me.getInstance().getCourse(getCourseId()).getDisplaynameEn());
 			setLocation2(items.get(1).getRoomCode());
 			setStartTime2(items.get(1).getStartTime());
 			setEndTime2(items.get(1).getEndTime());
 			setDate2(items.get(1).getShortWeekDay() + ", " + items.get(1).getDateAndTime2());
-			setCourseId2(items.get(1).getCourseID());
+			setCourseId2(items.get(1).getCourseId());
 			setCourseName2(Me.getInstance().getCourse(getCourseId2()).getDisplaynameEn()); 
 			return true;
 		}else{	

@@ -26,7 +26,7 @@ public class Parser{
 	//"courses""displaynamesv""course""courseid""displaynameen""regcode""program""term"
 	
 	/**
-	 * Uppdate Me and courses from XML if there are any changes
+	 * Update Me and courses from XML if there are any changes
 	 * @param xml string
 	 * @return boolean if info is updated in  Me
 	 * */
@@ -93,7 +93,7 @@ public class Parser{
 					}
 				}
 			}
-			//isstudent
+			// isstudent
 			nl = doc.getElementsByTagName("mahisstudent");
 			e = (Element)nl.item(0);
 			if (e!=null){

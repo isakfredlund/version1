@@ -1,9 +1,12 @@
 package se.mah.kd330a.project.itsl;
 
 import se.mah.kd330a.project.R;
+import se.mah.kd330a.project.framework.MainActivity;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.AlarmManager;
@@ -75,7 +78,9 @@ public class FragmentITSL extends Fragment implements
 			 */
 			rootView = (ViewGroup) inflater.inflate(R.layout.itsl_help, container, false);
 		}
-			
+		
+		MainActivity.mDrawerLayout.closeDrawer(MainActivity.mDrawerList);
+		
 		return rootView;
 	}
 

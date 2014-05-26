@@ -8,6 +8,7 @@ import se.mah.kd330a.project.find.data.RoomDbHandler;
 import se.mah.kd330a.project.find.view.FragmentBuilding;
 import se.mah.kd330a.project.find.view.FragmentFloorMap;
 import se.mah.kd330a.project.find.view.FragmentResult;
+import se.mah.kd330a.project.framework.MainActivity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -43,6 +44,9 @@ public class FragmentFind extends Fragment {
 
 		ViewGroup rootView = (ViewGroup) inflater
 				.inflate(R.layout.fragment_screen_find, container, false);
+		
+		
+		MainActivity.mDrawerLayout.closeDrawer(MainActivity.mDrawerList);
 		return rootView;
 	}
 

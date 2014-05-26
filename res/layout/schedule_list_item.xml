@@ -79,7 +79,7 @@
 
             <Button
                 android:id="@+id/findButton"
-                style="@style/mah_button_red"
+                style="@style/mah_button_blue"
                 android:layout_width="fill_parent"
                 android:layout_height="48dp"
                 android:layout_below="@id/list_course_child_activity"

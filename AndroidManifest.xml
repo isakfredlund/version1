@@ -19,13 +19,14 @@
     android:versionCode="9"
     android:versionName="0.98" >
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS" />
 
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="17" />
+        android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -48,7 +49,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="se.mah.kd330a.project.settings.view.SettingsActivity"
+            android:name="se.mah.kd330a.project.profile.view.SettingsActivity"
             android:label="@string/title_activity_settings" >
 
             <!-- The meta-data element is needed for versions lower than 4.1 -->

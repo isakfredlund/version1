@@ -6,26 +6,32 @@
     <string-array name="menu_texts">
         <item>Home</item>
         <item>My Schedule</item>
+        <item >Me @ MAH</item>
         <item>It\'s Learning</item>
         <item>Find on Campus</item>
-        <item>Me @ MAH</item>
-        <item>About this app</item>
+        <item>Links @ MAH</item>
+        <item>Credits</item>
+        <item >Log Out</item>
     </string-array>
     <string-array name="menu_icons">
         <item>@drawable/ic_menu_home</item>
         <item>@drawable/ic_menu_schedule</item>
+        <item >@drawable/ic_menu_me</item>
         <item>@drawable/ic_menu_itsl2</item>
         <item>@drawable/ic_menu_find</item>
         <item>@drawable/ic_menu_faq</item>
         <item>@drawable/ic_menu_help</item>
+        <item >@drawable/ic_action_profile</item>
     </string-array>
     <string-array name="menu_colors">
         <item>@drawable/menuitem_1</item>
         <item>@drawable/menuitem_2</item>
+        <item >@drawable/menuitem_7</item>
         <item>@drawable/menuitem_3</item>
         <item>@drawable/menuitem_4</item>
         <item>@drawable/menuitem_5</item>
         <item>@drawable/menuitem_6</item>
+        <item >@drawable/menuitem_8</item>
     </string-array>
     
     <string-array name="client_id">
@@ -37,92 +43,138 @@
     </string-array>
     
     
-    <string-array name ="faqOptions">
-       <item>"IT Support"</item> 
-       <item>"Housing in Malmo"</item>
-       <item>"Student Service"</item>
-       <item>"Career Service"</item>
-       <item>"New Student"</item>
-       
+    <string-array name ="links_options">
+       <item>"Categories"</item>
+       <item>"Student@MAH"</item> 
+       <item>"IT"</item>
+       <item>"Library"</item>
+       <item>"Housing"</item>
+       <item>"Career Guide"</item>
+       <item>"Social Media"</item>
     </string-array>
     
-    <string-array name = "faqSubOptions">
-        <item>"Useful links to IT services"</item>
-        <item>"First step to living in Malmö"</item>
-        <item>"Find out stuff about yourself"</item>
-        <item>"Supporting your job search"</item>
-        <item>"Starting out as a student"</item>
+    <string-array name ="links_list_options">
+       <item>"Student@MAH"</item> 
+       <item>"IT"</item>
+       <item>"Library"</item>
+       <item>"Housing"</item>
+       <item>"Career Guide"</item>
+       <item>"Social Media"</item>
+    </string-array>
+  
+    <string-array name="links_list_sub_options">
+        <item>"General information for students"</item>
+        <item>"All things IT"</item>
+        <item>"Important things for library"</item>
+        <item>"Find a home in Malmö"</item>
+        <item>"Useful links regarding your future"</item>
+        <item>"MAH @ social networks"</item>
+    </string-array>
+        
+        
+    <string-array name = "it">
+    	<item>"IDService"</item> 
+    	<item>"Wireless Network"</item> 
+    	<item>"Printing And Copying"</item> 
+      
     </string-array>
     
-    <string-array name = "itSupportOptions">
-    	<item>"- ID-Service"</item> 
-    	<item>"- Printing And Copying"</item> 
-    	<item>"- WiFi"</item>
-        
-        
+    <string-array name = "social_media">
+    	<item>"MAH@Facebook"</item> 
+    	<item>"MAH@Twitter"</item> 
+    	<item>"MAH@Instagram"</item> 
+    	<item>"MAH@LinkedIn"</item> 
     </string-array>
-    <string-array name = "housingOptions">
-    	<item>"- Student Housing"</item> 
-    	<item>"- Rental Housing"</item> 
+    
+    <string-array name = "housing">
+    	<item>"Student Housing"</item> 
+    	<item>"Rental Housing"</item> 
+    	<item>"Exchange Student"</item> 
+    </string-array>
+    
+    <string-array name = "student_at_mah">
+        <item>"Student Service"</item> 
+    	<item>"Student Self Service"</item> 
+    	<item>"Student Health"</item> 
+    	<item>"Student Union Malmö"</item> 
+    	<item>"Events"</item>
+    	<item>"Odontolog Student Union"</item> 
+    	<item>"Exchange Student"</item> 
     	
-        
-        
-    </string-array>
-    <string-array name = "studentOptions">
-    	<item>"- Student Service"</item> 
-    	
-        
-        
     </string-array>
     
-     <string-array name = "careerOptions">
-    	<item>"- Career Workshop"</item> 
-    	<item>"- Job Coaching"</item> 
-    	<item>"- Avalible Jobs"</item>
-        
-        
+     <string-array name = "career_guide">
+    	<item>"Job advertisement"</item> 
+    	<item>"Job Coach"</item> 
+    	<item>"Career Workshop"</item>
+        <item>"Future Finder"</item>
     </string-array>
     
-     <string-array name = "newStudentOptions">
-    	<item>"- Faculty of Health and Society"</item> 
-    	<item>"- Faculty of Culture and Society"</item> 
-    	<item>"- Faculty of Education and Society"</item>
-    	<item>"- Faculty of Odontology"</item>
-    	<item>"- Faculty of Technology and Society"</item>
-        
-        
+     <string-array name = "library">
+    	<item>"Go to library"</item> 
+    	<item>"Book a group room"</item> 
+    	<item>"List of databases"</item>
     </string-array>
-    <string-array name="html_links_it">
-        <item>"https://idservice.mah.se/default.aspx"</item>
-        <item>"http://www.mah.se/english/Student/Student-services/It-support/Programmes-and-Services/Printing-and-copying/"</item>
-        <item>"http://www.mah.se/english/Student/Student-services/It-support/Programmes-and-Services/Wireless-Network/"</item>
+    
+    <string-array name="url_student_at_mah">
+        <item>"http://www.mah.se/english/Student/Student-services/"</item>	 			<!-- item links to Student Service -->
+        <item>"https://minastudier.mah.se/default.aspx"</item>	 									<!-- item links to mina studier .se -->
+        <item>"http://www.mah.se/english/Student/Student-health-services/Contact/"</item>  <!-- item links to student health -->
+        <item>"http://malmostudenter.se/english/"</item>	 							<!-- item links to Student Union -->
+        <item>"http://mah.se/Nyheter/Kalender/"</item>	 								<!-- item links to Event Callender -->
+        <item>"http://kaftis.com/"</item>	 											<!-- item links to Odontology Student Union -->
+        <item>"http://www.mah.se/english/Education/Exchange-student/"</item>		 	<!-- item links to site for Exchange Students -->
     </string-array>
-    <string-array name="student_housing">
-        <item>http://www.mah.se/english/Student/Housing/Student-Housing/</item>
-        <item>http://www.mah.se/english/Student/Housing/Housing-in-Malmo/</item>
+    
+    <string-array name="url_it">
+        <item>"https://idservice.mah.se/default.aspx"</item>	 						<!-- item links to ID-service website -->
+        <item>"http://www.mah.se/english/Student/Student-services/It-support/Programmes-and-Services/Wireless-Network/"</item>	 <!-- item links to Wireless Network help -->
+        <item>"http://www.mah.se/english/Student/Student-services/It-support/Programmes-and-Services/Printing-and-copying/"</item>	 <!-- item links to Printing and Copying -->
     </string-array>
-    <string-array name="student_service">
-        <item>http://www.mah.se/english/Student/Student-services/</item>
+    
+    <string-array name="url_library">
+        <item>"http://www.mah.se/english/Library/"</item>	 									<!-- item links to Library webbsite, site is in swedish (option for english, OFE) -->
+    	<item>"http://www.mah.se/english/Library/Opening-Hours-and-Contacts/Orkanen-Library/Booking-group-rooms/"</item>	 <!-- item links to Book A room, site is in swedish (OFE) -->
+        <item>"http://infosok.mah.se/english/Library/Finding-Information/Find-Databases/"</item>	<!-- item links to Find a Database -->
     </string-array>
-    <string-array name="career_service">
-        <item>http://www.mah.se/english/Student/Karriar/Karriarworkshops/</item>
-        <item>http://www.mah.se/english/Student/Karriar/Job-Coaching/</item>
-        <item>http://www.mah.se/english/Student/Karriar/Available-jobs/</item>
+    
+    
+    <string-array name="url_housing">
+        <item>"http://www.mah.se/english/Student/Housing/Student-Housing-FAQ/"</item>	<!-- item links to FAQ's about student housing -->
+        <item>"http://hemma.mah.se/?lang=en"</item>
+        <item>"http://www.mah.se/english/Student/Housing/Accommodation/"</item>	 		<!-- item links to Housing for Exchange Students -->
     </string-array>
-    <string-array name="new_student">
-        <item>http://www.mah.se/english/Schools-and-faculties/Faculty-of-Health-and-Society/</item>
-        <item>http://www.mah.se/english/Schools-and-faculties/Faculty-of-Culture-and-Society/Current-Student/Welcome-to-the-Faculty-of-Culture-and-Society/</item>
-        <item>http://www.mah.se/english/Schools-and-faculties/Faculty-of-education-and-society/Welcome-to-the-Facutly-of-Education-and-Society/</item>
-        <item>http://www.mah.se/english/Schools-and-faculties/Faculty-of-Odontology/</item>
-        <item>http://www.mah.se/english/Schools-and-faculties/Faculty-of-Technology-and-Society/</item>
-        <item></item>
+    
+    <string-array name="url_career_guide">
+        <item>"http://mah.se/medarbetare/Personalfragor/Platsannonser/"</item>	 		<!-- item links to site with job posting, site is in swedish -->
+        <item>"http://www.mah.se/english/Student/Career/Job-Coaching/"</item>	 			<!-- item links to site about Job coaching -->
+        <item>"http://www.mah.se/english/Student/Karriar/Karriarworkshops/"</item>	 	<!-- item links to CareerWorkshop website, site is in swedish-->
+        <item>"http://futurefinder.mah.se/"</item>	 								<!-- item links to Future Finder website, site is in swedish -->
     </string-array>
-    <string-array name="faq_drawables">
-        <item>@drawable/itsupport_lager</item>
-        <item>@drawable/housing</item>
-        <item>@drawable/studentservice</item>
-        <item>@drawable/careerservice</item>
-        <item>@drawable/newstudent</item>
+    
+    <string-array name="url_social_media">
+        <item>"https://www.facebook.com/malmouniversity"</item> 						<!-- item links to MAH's FaceBook Feed -->
+        <item>"https://twitter.com/MalmoUniversity"</item>	 							<!-- item links to MAH's Twitter Feed -->
+    	<item>"http://instagram.com/malmostudent"</item>	 							<!-- item links to MAH's Instagram Feed -->
+    	<item>"https://www.linkedin.com/company/malmo-university"</item>				<!-- item links to MAH's LinkedIn Feed -->
+    </string-array>
+    
+    <string-array name ="student_nr">
+        <item>"111"</item>
+    </string-array>
+    <string-array name ="it_nr">
+        <item>"222"</item>
+    </string-array>
+    <string-array name ="library_nr">
+        <item>"333"</item>
+    </string-array>
+    
+    <string-array name = "number">
+        <item > "+46 40 665 75 65"</item>      <!-- -Number to Student Kåren --> 
+        <item > "+46 40 665 86 50"</item>      <!-- -Number to Odontologe Kåren --> 
+        <item > "+46 40 665 73 00"</item>      <!-- -Number to Library --> 
+        <item > "+46 40 665 70 00"</item>      <!-- -Number to Student Service --> 
+        <item > "+46 40 665 70 00"</item>      <!-- -Number to It support --> 
     </string-array>
 
     <string name="drawer_open">Open navigation drawer</string>
@@ -203,11 +255,7 @@
     <string name="logo_description">Logo of Malmö Högskola</string>
     <string name="title_activity_start">Student App</string>
     
-    
     <!--  It's Learning -->
-    
-    
-    
     <string name="tx_textMain">You can get the latest news for your courses from It\'s learning right here in the app if you follow these steps.</string>
     <string name="tx_textTwo">Launch the browser in your mobile phone and log in to It\'s Learning </string>
     <string name="tx_textThree">The Icon shown below indicates the information that can be displayed by this app. For example, the Dashboard and Latest Changes in your courses uses this icon:</string>
@@ -221,7 +269,57 @@
     <string name="hello">scrollup</string>
     <string name="credits">Credits</string>
     <string name="it">Interaction design</string>
-    <string name="whenMade">The app was released on 8th November 2013</string>
+    <string name="whenMade">Version 2 of this app was released on June 5th 2014.</string>
+    
+         <!--  IDK13 -->
+    <string-array name ="idk13">
+        <item>Version 2\n</item>
+        <item>Interaktionsdesign-programmet 2013\n</item>
+        <item>Måns Ahlgren</item>
+        <item>Gustaf Andersson</item>
+        <item>Eva Andreasson</item>
+        <item>Kristin Asker</item>
+        <item>David Axby</item>
+        <item>Joakim Dicksson</item>
+        <item>Malin Dotevall Banks</item>
+        <item>Tuannoorgekhan Dulkhadir</item>
+        <item>Eya Khazzar</item>
+        <item>Mario El-Hajj</item>
+        <item>Isak Fredlund</item>
+        <item>Amanda Hammarberg</item>
+        <item>Erik Hassel</item>
+        <item>Kim Holmberg</item>
+        <item>Julia Håkansson</item>
+        <item>Axel Isaksson</item>
+        <item>Jonas Karlsson</item>
+        <item>Maren Kleppan Møller</item>
+        <item>Elias Lindblad</item>
+        <item>Billy Lund</item>
+        <item>Isak Lund Lilja</item>
+        <item>Heléne Lundhag Dyson</item>
+        <item>Oskar Lundquist</item>
+        <item>Ayla Markkula</item>
+        <item>Tor Möller</item>
+        <item>Luana Neacsu</item>
+        <item>Anton Nyman</item>
+        <item>Gabriella Olsson</item>
+        <item>Julia Persson</item>
+        <item>Sandra Petersson</item>
+        <item>Carl William Shearer</item>
+        <item>André Stenberg</item>
+        <item>Tonny Sterner</item>
+        <item>Niklas Svanberg</item>
+        <item>Jesper Söderberg</item>
+        <item>Benjamin Thorsell</item>
+        <item>Viktor Tornborg</item>
+        <item>Yuliya N Vatsova</item>
+        </string-array>
+        
+
+	<string-array name ="utgivare">
+        <item>Ansvarig utgivare: </item>
+        <item>Lars Holmberg</item></string-array>
+	<!-- End of IDK 13 -->
 
  <string-array name="Idteam"> 
       	<item>INTERACTION DESIGN</item>
@@ -265,8 +363,4 @@
     
     <string name="instagram_client_ID">459cd68d82d642bfb73678ceb77290cd</string>
     <string name="instagram_client_secret">7a0733d8b4f64d4eb0a5e0394cae5074</string>
-    
-    
-    
-
 </resources>

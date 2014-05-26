@@ -1,6 +1,5 @@
 package se.mah.kd330a.project.adladok.xmlparser;
 
-
 import java.io.StringReader;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -25,7 +24,7 @@ public class XMLParser {
 		        is.setCharacterStream(new StringReader(xml));
 		        doc = db.parse(is); 
 			} catch (Exception e) {
-				//Log.e("Error: ", e.getMessage());//
+				// Log.e("Error: ", e.getMessage()); //
 				return null;
 			}
 	        return doc;

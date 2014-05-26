@@ -14,17 +14,16 @@ import se.mah.kd330a.project.adladok.model.Me;
 import se.mah.kd330a.project.schedule.model.*;
 
 public class ParseData {
-	//
+	
 	ArrayList<ScheduleWeek> scheduleWeeks;
 
 	public ParseData() {
 		scheduleWeeks = new ArrayList<ScheduleWeek>();
-
 	}
 
 	public ArrayList<ScheduleWeek> getParsedDataFromKronoxByWeekNew(int numberOfWeeks) {
 		if (!Me.getInstance().getUserID().isEmpty()) {
-			for (int i = 0; i < numberOfWeeks; i++) {
+			for (int i = -4; i < numberOfWeeks; i++) {
 				scheduleWeeks.add(getScheduleWeek(i));
 			}
 			return scheduleWeeks;
@@ -44,6 +43,7 @@ public class ParseData {
 
 		ArrayList<ScheduleItem> thisWeekList = new ArrayList<ScheduleItem>();
 		Collection<?> kronox_events = KronoxCalendar.getWeeksEventsFromThisWeek(weekFromThisWeek);
+		
 		// Here we only take seven days from today this should be calculated
 		// from the monday this should be done in
 		// KronoxCalendar.sevenDaysEvents()
@@ -53,7 +53,7 @@ public class ParseData {
 				if (c instanceof VEvent) {
 					ScheduleItem s = new ScheduleItem((VEvent) c);
 					//Clean out items from courses that I am not registered on (program courses)
-					if (Me.getInstance().getCourse(s.getCourseID())!=null){
+					if (Me.getInstance().getCourse(s.getCourseId())!=null){
 						thisWeekList.add(s);
 					}
 				}

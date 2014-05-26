@@ -4,31 +4,15 @@
     android:layout_height="wrap_content"
     android:background="@color/grey_light"
     android:orientation="vertical" >
-    
-        <ImageView
-        android:id="@+id/dividerElement"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginBottom="0dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:background="@color/grey" />
-    
 
     <include
         android:id="@+id/list_item_section_text"
         android:layout_marginTop="6dp"
         layout="@layout/schedule_separator_layout" />
 
-    <ImageView
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/grey_light" />
-
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:animateLayoutChanges="true"
@@ -110,9 +94,8 @@
                 android:text="@string/roomcode"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/grey_dark" />
-        </LinearLayout>
-<!--  
-        <View
+            
+             <View
             android:id="@+id/icPointer"
             android:layout_width="16dp"
             android:layout_height="16dp"
@@ -120,7 +103,11 @@
             android:layout_marginRight="8dp"
             
             android:background="@drawable/ic_pointer_down" />
-            -->
+            
+        </LinearLayout>
+  
+       
+         
     
     </LinearLayout>
 

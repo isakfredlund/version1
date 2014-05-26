@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/link_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/links_states"
+    android:padding="8dp" >
+    
+    <LinearLayout
+        android:id="@+id/cat_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_marginRight="4dp"
+        android:layout_alignParentRight="true" >
+        
+        <ImageView 
+        android:id="@+id/category_image"
+        android:layout_width="55dip"
+        android:layout_height="55dip"
+         />
+        
+    </LinearLayout>
+
+    <TextView 
+    android:id="@+id/title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignTop="@+id/cat_img"
+    android:layout_alignParentLeft="true"
+    android:textSize="16sp"
+    android:paddingTop="8dp" 
+    android:paddingStart="16dp"/>
+    
+    <TextView 
+    android:id="@+id/sub_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/title"
+    android:layout_marginTop="1dip"
+    android:layout_alignParentLeft="true"
+    android:textSize="12sp"
+    android:textColor="@color/grey_dark"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:paddingStart="16dp" />
+    
+</RelativeLayout>
+

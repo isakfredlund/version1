@@ -103,17 +103,6 @@
                 android:layout_marginBottom="6dp"
                 android:background="@color/grey" >
             </View>
-
-        <Button
-            android:id="@+id/button1"
-            style="@style/mah_button_red"
-            android:layout_width="fill_parent"
-            android:layout_height="48dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="8dp"
-            android:onClick="toLadokInlogg"
-            android:text="Log me out" />
     </LinearLayout>
 
 </ScrollView>
