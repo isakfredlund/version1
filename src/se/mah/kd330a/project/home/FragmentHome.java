@@ -2,26 +2,22 @@ package se.mah.kd330a.project.home;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
 import java.io.ObjectInputStream;
 import java.net.URL;
 import java.util.ArrayList;
-
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import net.fortuna.ical4j.data.ParserException;
-
 import se.mah.kd330a.project.R;
 import se.mah.kd330a.project.adladok.model.Constants;
-
 import se.mah.kd330a.project.adladok.model.Course;
+import se.mah.kd330a.project.adladok.model.FragmentCallback;
 import se.mah.kd330a.project.adladok.model.Me;
 import se.mah.kd330a.project.framework.MainActivity;
 import se.mah.kd330a.project.home.data.RSSFeed;
@@ -29,7 +25,6 @@ import se.mah.kd330a.project.itsl.Article;
 import se.mah.kd330a.project.itsl.FeedManager;
 import se.mah.kd330a.project.schedule.data.KronoxCalendar;
 import se.mah.kd330a.project.schedule.data.KronoxReader;
-
 import se.mah.kd330a.project.schedule.view.FragmentScheduleWeekPager;
 import se.mah.kd330a.project.R;
 import android.app.ActionBar;
@@ -39,22 +34,21 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.AsyncTask;
-
 import android.app.Activity;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.webkit.WebView;
+import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
-
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
@@ -71,6 +65,7 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 	private String TAG ="FragmentHome";
 	private String actionBarTitle[];
 	private boolean nbrOfClasses;
+	private SwipeRefreshLayout 	swipeRefreshLayout;
 
 
 	
@@ -121,6 +116,41 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 		InstagramView = (ImageView) rootView.findViewById(R.id.instagramview);
 	    
 	    MainActivity.mDrawerLayout.closeDrawer(MainActivity.mDrawerList);
+	    
+	 // swipeRefreshLayout this code activates the part for pulling down to update the schedule (It activates all data in the app)
+	 		swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container_home);
+	 		swipeRefreshLayout.setColorScheme(R.color.blue, R.color.green, R.color.orange, R.color.red_mah);
+	 		swipeRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+	 			@Override
+	 			public void onRefresh() {
+	 				Me.getInstance().startRefresher(new FragmentCallback(){
+	 					@Override
+	 					public void onRefreshCompleted() {
+	 						swipeRefreshLayout.setRefreshing(false);
+	 						((MainActivity)getActivity()).refreshCurrent();
+	 					}
+
+	 				}, getActivity());
+	 			}
+	 		});
+	 		
+	 		// This fixed a bug where you couldn't scroll up after scrolling down without updating the app.
+	 		// It disables the swipeRefreshLayout if you aren't scrolled all the way to the top. 
+	 		/*elv.setOnScrollListener(new AbsListView.OnScrollListener() {
+	 			@Override
+	 			public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+	 				if (!elv.canScrollVertically(-100)){  
+	 					swipeRefreshLayout.setEnabled(true);
+	 				}
+	 				else{
+	 					swipeRefreshLayout.setEnabled(false);
+	 				}
+	 			}
+	 			@Override
+	 			public void onScrollStateChanged(AbsListView view, int scrollState) {
+	 			}
+	 		});*/
+	    
 		return rootView;
 	}
 	

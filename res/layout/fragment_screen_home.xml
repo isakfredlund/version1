@@ -1,4 +1,6 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipe_container_home"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/grey_middle"
@@ -295,4 +297,4 @@
 
     </ScrollView>
 
-</LinearLayout>
+</android.support.v4.widget.SwipeRefreshLayout>
