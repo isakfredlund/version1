@@ -40,7 +40,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="190dp"
+                    android:layout_height="110dp"
                     android:orientation="horizontal" >
 
                     <View
@@ -141,7 +141,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="190dp"
+                    android:layout_height="110dp"
                     android:orientation="horizontal" >
 
                     <View
@@ -269,15 +269,15 @@
 
                 <TextView
                     android:id="@+id/textView1"
-                    android:layout_width="130dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="46dp"
+                    android:layout_alignRight="@+id/instagramview"
+                    android:layout_marginTop="30dp"
                     android:background="#666666"
                     android:text="#MAHStudent"
                     android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:textSize="30sp" />
                 
 					<ImageView
 					    android:id="@+id/instagramview"
