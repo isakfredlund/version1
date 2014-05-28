@@ -39,8 +39,8 @@
         </activity>
         <activity
             android:name="se.mah.kd330a.project.StartActivity"
-            android:label="@string/title_activity_start" 
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
+            android:label="@string/title_activity_start"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -77,7 +77,10 @@
             android:label="@string/title_activity_ad_ladok_test"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         </activity>
-        
+        <activity
+            android:name="se.mah.kd330a.project.BookMarket_Main"
+            android:label="@string/title_activity_book_market__main" >
+        </activity>
     </application>
 
 </manifest>

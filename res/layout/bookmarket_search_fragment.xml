@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_middle" >
+    
+<TextView
+        android:id="@+id/textView1"
+        android:layout_width="736dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="48dp"
+        android:background="@color/white" />
+
+<TextView
+    android:id="@+id/textView2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignTop="@+id/textView1"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="18dp"
+    android:text="Field of Study"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+<ImageView
+    android:id="@+id/imageView1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/textView2"
+    android:layout_centerHorizontal="true"
+    android:src="@drawable/field_of_study" />
+
+<TextView
+    android:id="@+id/textView3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/imageView1"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="12dp"
+    android:text="Book title"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+<TextView
+    android:id="@+id/textView4"
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:layout_alignLeft="@+id/imageView1"
+    android:layout_alignRight="@+id/imageView1"
+    android:layout_below="@+id/textView3"
+    android:background="@color/grey_light" />
+
+<TextView
+    android:id="@+id/textView5"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/textView4"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="22dp"
+    android:text="Author"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+<TextView
+    android:id="@+id/textView6"
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:layout_alignLeft="@+id/textView4"
+    android:layout_alignRight="@+id/textView4"
+    android:layout_below="@+id/textView5"
+    android:background="@color/grey_light" />
+
+<ImageView
+    android:id="@+id/imageView2"
+    android:layout_width="48dp"
+    android:layout_height="48dp"
+    android:layout_alignBottom="@+id/textView1"
+    android:layout_marginBottom="12dp"
+    android:layout_marginLeft="15dp"
+    android:layout_toRightOf="@+id/textView2"
+    android:src="@drawable/ic_action_search" />
+
+<TextView
+    android:id="@+id/textView7"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBottom="@+id/imageView2"
+    android:layout_alignRight="@+id/imageView2"
+    android:layout_marginBottom="7dp"
+    android:layout_marginRight="44dp"
+    android:text="Search"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>

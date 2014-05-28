@@ -10,6 +10,7 @@
         <item>Find on Campus</item>
         <item>Me @ MAH</item>
         <item>About this app</item>
+        <item>Bookmarket</item>
     </string-array>
     <string-array name="menu_icons">
         <item>@drawable/ic_menu_home</item>
@@ -18,6 +19,7 @@
         <item>@drawable/ic_menu_find</item>
         <item>@drawable/ic_menu_faq</item>
         <item>@drawable/ic_menu_help</item>
+        <item>@drawable/bookmarket</item>
     </string-array>
     <string-array name="menu_colors">
         <item>@drawable/menuitem_1</item>
@@ -27,70 +29,49 @@
         <item>@drawable/menuitem_5</item>
         <item>@drawable/menuitem_6</item>
     </string-array>
-    
     <string-array name="client_id">
         <item>459cd68d82d642bfb73678ceb77290cd</item>
     </string-array>
-    
     <string-array name="client_secret">
         <item>7a0733d8b4f64d4eb0a5e0394cae5074</item>
     </string-array>
-    
-    
-    <string-array name ="faqOptions">
-       <item>"IT Support"</item> 
-       <item>"Housing in Malmo"</item>
-       <item>"Student Service"</item>
-       <item>"Career Service"</item>
-       <item>"New Student"</item>
-       
+    <string-array name="faqOptions">
+        <item>"IT Support"</item>
+        <item>"Housing in Malmo"</item>
+        <item>"Student Service"</item>
+        <item>"Career Service"</item>
+        <item>"New Student"</item>
     </string-array>
-    
-    <string-array name = "faqSubOptions">
+    <string-array name="faqSubOptions">
         <item>"Useful links to IT services"</item>
         <item>"First step to living in Malmö"</item>
         <item>"Find out stuff about yourself"</item>
         <item>"Supporting your job search"</item>
         <item>"Starting out as a student"</item>
     </string-array>
-    
-    <string-array name = "itSupportOptions">
-    	<item>"- ID-Service"</item> 
-    	<item>"- Printing And Copying"</item> 
-    	<item>"- WiFi"</item>
-        
-        
+    <string-array name="itSupportOptions">
+        <item>"- ID-Service"</item>
+        <item>"- Printing And Copying"</item>
+        <item>"- WiFi"</item>
     </string-array>
-    <string-array name = "housingOptions">
-    	<item>"- Student Housing"</item> 
-    	<item>"- Rental Housing"</item> 
-    	
-        
-        
+    <string-array name="housingOptions">
+        <item>"- Student Housing"</item>
+        <item>"- Rental Housing"</item>
     </string-array>
-    <string-array name = "studentOptions">
-    	<item>"- Student Service"</item> 
-    	
-        
-        
+    <string-array name="studentOptions">
+        <item>"- Student Service"</item>
     </string-array>
-    
-     <string-array name = "careerOptions">
-    	<item>"- Career Workshop"</item> 
-    	<item>"- Job Coaching"</item> 
-    	<item>"- Avalible Jobs"</item>
-        
-        
+    <string-array name="careerOptions">
+        <item>"- Career Workshop"</item>
+        <item>"- Job Coaching"</item>
+        <item>"- Avalible Jobs"</item>
     </string-array>
-    
-     <string-array name = "newStudentOptions">
-    	<item>"- Faculty of Health and Society"</item> 
-    	<item>"- Faculty of Culture and Society"</item> 
-    	<item>"- Faculty of Education and Society"</item>
-    	<item>"- Faculty of Odontology"</item>
-    	<item>"- Faculty of Technology and Society"</item>
-        
-        
+    <string-array name="newStudentOptions">
+        <item>"- Faculty of Health and Society"</item>
+        <item>"- Faculty of Culture and Society"</item>
+        <item>"- Faculty of Education and Society"</item>
+        <item>"- Faculty of Odontology"</item>
+        <item>"- Faculty of Technology and Society"</item>
     </string-array>
     <string-array name="html_links_it">
         <item>"https://idservice.mah.se/default.aspx"</item>
@@ -135,10 +116,9 @@
     <string name="next_class_widget_heading">My next lesson</string>
     <string name="itsl_widget_heading">It´s Learning</string>
     <string name="news_widget_heading">News from MAH</string>
-    <string name="fultext1">No classes today.</string>       							<!--New string to schedule-view // Isak -->
-    <!-- <string name="fultext">Loading...</string> 	//Not being used/Isak-->
+    <string name="fultext1">No classes today.</string> <!-- New string to schedule-view // Isak -->
+    <!-- <string name="fultext">Loading...</string> 	//Not being used/Isak -->
     <string name="fultitle">New notifications</string>
-    
     <string name="home_block_description">Image of Malmö Högskola</string>
     <string name="title_activity_splash">SplashActivity</string>
     <string name="my_courses_heading">My Courses</string>
@@ -202,19 +182,16 @@
     <string name="title_activity_test_get_image">TestGetImageActivity</string>
     <string name="logo_description">Logo of Malmö Högskola</string>
     <string name="title_activity_start">Student App</string>
-    
-    
-    <!--  It's Learning -->
-    
-    
-    
+
+    <!-- It's Learning -->
+
     <string name="tx_textMain">You can get the latest news for your courses from It\'s learning right here in the app if you follow these steps.</string>
     <string name="tx_textTwo">Launch the browser in your mobile phone and log in to It\'s Learning </string>
     <string name="tx_textThree">The Icon shown below indicates the information that can be displayed by this app. For example, the Dashboard and Latest Changes in your courses uses this icon:</string>
     <string name="tx_textFour">Click the orange rss-icon for a feed you want to access in the app. Once you click that link a new window will open and will look something like this: </string>
     <string name="tx_textFive">Bookmark the page in your browser. </string>
-     <string name="tx_textSix">Click the rss-icon and bookmark the feed for all the feeds you want to have in the app, then restart the app. You can add more feeds later if you want to. f you want to remove a feed from the app - just remove the bookmark for that feed from your browser. </string>
-        <!-- Credits strings -->
+    <string name="tx_textSix">Click the rss-icon and bookmark the feed for all the feeds you want to have in the app, then restart the app. You can add more feeds later if you want to. f you want to remove a feed from the app - just remove the bookmark for that feed from your browser. </string>
+    <!-- Credits strings -->
     <string name="app_name2">scroll</string>
     <string name="action_settings2">Settings</string>
     <string name="hello_world2">Hello world!</string>
@@ -223,9 +200,9 @@
     <string name="it">Interaction design</string>
     <string name="whenMade">The app was released on 8th November 2013</string>
 
- <string-array name="Idteam"> 
-      	<item>INTERACTION DESIGN</item>
-     	<item>Anil Akyol</item>
+    <string-array name="Idteam">
+        <item>INTERACTION DESIGN</item>
+        <item>Anil Akyol</item>
         <item>Daniel Bagge</item>
         <item>Marcus Johansson</item>
         <item>Ondrej Mynarik</item>
@@ -234,9 +211,8 @@
         <item>Erik Saar</item>
         <item>Linda Weinmer</item>
     </string-array>
-    
     <string-array name="gdteam">
-        <item>GRAPHICS DESIGN</item>  
+        <item>GRAPHICS DESIGN</item>
         <item>Sabaa Alkatib</item>
         <item>Sebastian Danso</item>
         <item>Clara Forsberg</item>
@@ -246,9 +222,8 @@
         <item>Pablo Suzarte Gallardo</item>
         <item>Alok Utsav</item>
     </string-array>
-    
     <string-array name="techteam">
-         <item>PROGRAMMING</item>  
+        <item>PROGRAMMING</item>
         <item>Sanel Hadzic</item>
         <item>Marcus Johansson</item>
         <item>Marcus Månsson</item>
@@ -258,15 +233,12 @@
         <item>Victor Sandberg</item>
         <item>Alexander Taavitsainen</item>
     </string-array>
+
     <string name="activity">Activity: </string>
     <string name="noactivity">Activity not entered</string>
     <string name="emptycalendertext">No scheduled lectures for this week.</string>
-   
-    
     <string name="instagram_client_ID">459cd68d82d642bfb73678ceb77290cd</string>
     <string name="instagram_client_secret">7a0733d8b4f64d4eb0a5e0394cae5074</string>
-    
-    
-    
+    <string name="title_activity_book_market__main">BookMarket_Main</string>
 
 </resources>
