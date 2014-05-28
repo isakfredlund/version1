@@ -202,7 +202,7 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 		LinearLayout nextClassWidget = (LinearLayout) rootView.findViewById(R.id.next_class_widget);
 		nextClassWidget.setVisibility(LinearLayout.VISIBLE); //The visibility can be used here....
 		LinearLayout nextClassWidget2 = (LinearLayout) rootView.findViewById(R.id.next_class_widget_2);
-		nextClassWidget.setVisibility(LinearLayout.INVISIBLE); //Already set as 'visible' earlier and two schedule items are 'visible' in the app 
+		nextClassWidget.setVisibility(LinearLayout.VISIBLE); //Already set as 'visible' earlier and two schedule items are 'visible' in the app 
 		
 		if (profileRegistered)
 		{
