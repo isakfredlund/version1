@@ -117,7 +117,7 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 	    
 	    MainActivity.mDrawerLayout.closeDrawer(MainActivity.mDrawerList);
 	    
-	 // swipeRefreshLayout this code activates the part for pulling down to update the schedule (It activates all data in the app)
+	 // swipeRefreshLayout this code activates the part for pulling down to update the schedule (it activates all data in the app)
 	 		swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_container_home);
 	 		swipeRefreshLayout.setColorScheme(R.color.blue, R.color.green, R.color.orange, R.color.red_mah);
 	 		swipeRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
@@ -133,23 +133,6 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 	 				}, getActivity());
 	 			}
 	 		});
-	 		
-	 		// This fixed a bug where you couldn't scroll up after scrolling down without updating the app.
-	 		// It disables the swipeRefreshLayout if you aren't scrolled all the way to the top. 
-	 		/*elv.setOnScrollListener(new AbsListView.OnScrollListener() {
-	 			@Override
-	 			public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-	 				if (!elv.canScrollVertically(-100)){  
-	 					swipeRefreshLayout.setEnabled(true);
-	 				}
-	 				else{
-	 					swipeRefreshLayout.setEnabled(false);
-	 				}
-	 			}
-	 			@Override
-	 			public void onScrollStateChanged(AbsListView view, int scrollState) {
-	 			}
-	 		});*/
 	    
 		return rootView;
 	}
