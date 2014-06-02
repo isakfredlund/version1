@@ -1,6 +1,6 @@
 package se.mah.kd330a.project.home.data;
 
-public class InsagramAuth {
+public class InstagramAuth {
 
 
 	private static final String AUTHURL = "https://api.instagram.com/oauth/authorize/";
