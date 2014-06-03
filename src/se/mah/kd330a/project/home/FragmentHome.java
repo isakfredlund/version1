@@ -243,7 +243,9 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 				if(classRoom.length() > 6){
 					classRoom = classRoom.substring(2, 6);
 				}
-				textNextClassRoom.setText(classRoom);		
+				textNextClassRoom.setText(classRoom);
+				TextView dateView = (TextView) nextClassWidget2.findViewById(R.id.list_course_date2);
+				dateView.setText(nextClass.getDate2());
 		
 				
 				//View scheduleColor1 = (View) nextClassWidget2.findViewById(R.id.home_schedule1_2);
