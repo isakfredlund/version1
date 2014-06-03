@@ -19,6 +19,7 @@ import se.mah.kd330a.project.faq.FragmentFaq;
 import se.mah.kd330a.project.find.FragmentFind;
 import se.mah.kd330a.project.help.FragmentCredits;
 import se.mah.kd330a.project.home.FragmentHome;
+import se.mah.kd330a.project.home.FragmentBookmarket;
 import se.mah.kd330a.project.home.data.RSSFeed;
 import se.mah.kd330a.project.itsl.FeedManager;
 import se.mah.kd330a.project.itsl.FragmentITSL;
@@ -63,7 +64,8 @@ public class MainActivity extends FragmentActivity implements Observer{
 	private final int FIND = 3;
 	private final int FAQ = 4;
 	private final int HELP = 5;
-
+	private final int BOOK = 6;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -193,7 +195,10 @@ public class MainActivity extends FragmentActivity implements Observer{
     	android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
     	fragmentManager. popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE); 
     	android.support.v4.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
+    	
     	Fragment fragment;
+    	
+    	
     	switch (position) {
 		case HOME:	
 			fragment = new FragmentHome();
@@ -218,12 +223,18 @@ public class MainActivity extends FragmentActivity implements Observer{
 			fragment = new FragmentCredits();
 		    transaction.addToBackStack(null);
 			break;
+		case BOOK:
+			fragment = new FragmentBookmarket();
+			transaction.addToBackStack(null);
+			
+			break;
 		default:	
 			fragment = new FragmentHome();
 		}
     	transaction.replace(R.id.content_frame, fragment);
     	transaction.commit();
-        // update selected item and title, then close the drawer
+    	        
+    	// update selected item and title, then close the drawer
         mDrawerList.setItemChecked(position, true);
         setTitle(mMenuTitles[position]);
         mDrawerLayout.closeDrawer(mDrawerList);
@@ -265,6 +276,9 @@ public class MainActivity extends FragmentActivity implements Observer{
     public void toFind(View view) {
 		selectItem(this.FIND);
 	}
+    public void toBookmarket(View view) {
+    	selectItem(this.BOOK);
+    }
 
 	@Override
 	public void update(Observable observable, Object data) {
