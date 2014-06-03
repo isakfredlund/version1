@@ -1,5 +1,7 @@
 package se.mah.kd330a.project.framework;
 
+import java.util.List;
+
 import se.mah.kd330a.project.R;
 import se.mah.kd330a.project.StartActivity;
 import se.mah.kd330a.project.adladok.model.Constants;
@@ -40,7 +42,7 @@ public class MainActivity extends FragmentActivity {
 	 * Activity that starts after the StartActivity has finished logging in. 
 	 * Holds the "main" app.
 	 */
-
+	
 	public static DrawerLayout 		mDrawerLayout;
 	public static ListView 			mDrawerList;
 	private ActionBarDrawerToggle 	mDrawerToggle;
@@ -60,6 +62,7 @@ public class MainActivity extends FragmentActivity {
 	private final int 				HELP = 6;
 	private final int 				LOGOUT = 7;
 	private int 					refreshCheck;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -120,17 +123,19 @@ public class MainActivity extends FragmentActivity {
     }
    
     
-    public void onBackPressed() {
+   public void onBackPressed() {  
     	getActionBar().setTitle(mTitle);
-        invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-        super.onBackPressed();
+    	
+            super.onBackPressed();
+        
+    
     return;
     }
     
+    
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -191,7 +196,7 @@ public class MainActivity extends FragmentActivity {
 	public void selectItem(int position) {
 		// update the main content by replacing fragments
 		FragmentManager fragmentManager = getSupportFragmentManager();
-		fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE); 
+		//fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE); 
 		FragmentTransaction transaction = fragmentManager.beginTransaction();
 		Fragment fragment = null;
 		switch (position) {

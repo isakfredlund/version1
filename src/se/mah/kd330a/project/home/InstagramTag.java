@@ -8,7 +8,7 @@ public class InstagramTag implements Serializable {
 	private String thumbnail = "";
 	private String standardResolution = "";
 
-	// Userdetails
+	// User details
 	private String username = "";
 	private String profilePicture;
 	private String fullName = "";

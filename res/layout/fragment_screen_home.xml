@@ -11,7 +11,7 @@
         android:layout_width="fill_parent"
         android:layout_height="match_parent" >
         
-        <LinearLayout
+       <LinearLayout
             android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="373dp"
@@ -73,7 +73,7 @@
 			            android:layout_toRightOf="@+id/list_course_building_id"
 			            android:text="No room set"
 			            android:textStyle="bold" />
-                    
+                
                     <View
 			            android:id="@+id/calendarColorFrame2"
 			            android:layout_width="1dp"
@@ -198,6 +198,7 @@
                 
            	</LinearLayout>
            	
+
             <RelativeLayout
                 android:id="@+id/itslearning_widget"
                 android:layout_width="wrap_content"
@@ -239,30 +240,31 @@
                 
             	<TextView
                     android:id="@+id/textView1"
-                    android:layout_width="130dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="46dp"
+                    android:layout_alignRight="@+id/instagramview"
+                    android:layout_marginTop="30dp"
                     android:background="#666666"
                     android:text="#MAHStudent"
                     android:textColor="@color/white"
-                    android:textSize="20sp" />
-            	
-            	<ImageView
-                    android:id="@+id/instagramview"
-                    android:layout_width="255dp"
-                    android:layout_height="255dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:layout_weight="0.67"
-                    android:background="@color/grey_dark"
-                    android:padding="5dp"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/loading" />
-            	
-           	</RelativeLayout>
-            
+                    android:textSize="30sp" />
+                
+					<ImageView
+					    android:id="@+id/instagramview"
+					    android:layout_width="255dp"
+					    android:layout_height="255dp"
+					    android:layout_centerHorizontal="true"
+					    android:layout_centerVertical="true"
+					    android:layout_weight="0.67"
+					    android:background="@color/grey_dark"
+					    android:padding="5dp"
+					    android:scaleType="centerInside"
+					    android:src="@drawable/loading" />
+
+            </RelativeLayout>
+            <!-- </com.handmark.pulltorefresh.library.PullToRefreshScrollView> -->
+
         </LinearLayout>
         
     </ScrollView>
