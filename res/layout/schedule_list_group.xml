@@ -4,14 +4,10 @@
     android:layout_height="wrap_content"
     android:background="@color/grey_light"
     android:orientation="vertical" >
+ 
 
-    <ImageView
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/grey_light" />
-
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
@@ -21,90 +17,80 @@
         android:orientation="horizontal"
         android:scrollbarAlwaysDrawVerticalTrack="true" >
 
-        <ImageView
-            android:id="@+id/calendarColorFrame1"
-            android:layout_width="8dp"
-            android:layout_height="fill_parent"
-            android:background="@color/green" />
+        <TextView
+            android:id="@+id/list_course_time_start_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/test_time"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="20sp" />
 
-        <LinearLayout
-            android:layout_width="72dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:orientation="vertical" >
+        <TextView
+            android:id="@+id/list_course_building_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/list_course_time_start_end"
+            android:layout_below="@+id/list_course_time_start_end"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:text="" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/list_course_start_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/starttime"
-                    android:textColor="@color/black"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/list_course_end_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/endtime"
-                    android:textColor="@color/black"
-                    android:textSize="24sp" />
-            </LinearLayout>
-        </LinearLayout>
+        <TextView
+            android:id="@+id/list_course_room_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/list_course_building_id"
+            android:layout_alignBottom="@+id/list_course_building_id"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/list_course_building_id"
+            android:text="No room set"
+            android:textStyle="bold" />
 
         <View
             android:id="@+id/calendarColorFrame2"
-            android:layout_width="2dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="8dp"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_alignBottom="@+id/list_course_room_id"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="8dp"
-            android:background="@color/green" />
-		<LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:gravity="center_vertical"
-            android:orientation="vertical" >
-        
-       
-            <TextView
-                android:id="@+id/list_course_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/coursename"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/black" />
+            android:layout_toRightOf="@+id/list_course_time_start_end"
+            android:background="@color/blue" />
 
-            <TextView
-                android:id="@+id/list_course_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/roomcode"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/grey_dark" />
-            
-          <View
+        <TextView
+            android:id="@+id/list_course_coursename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/calendarColorFrame2"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginTop="12dp"
+            android:layout_toRightOf="@+id/calendarColorFrame2"
+            android:text="@string/coursename" />
+
+        <View
             android:id="@+id/icPointer"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_gravity="right"
-            android:layout_marginRight="8dp"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="18dp"
+            android:layout_alignBottom="@+id/list_course_building_id"
             android:background="@drawable/ic_pointer_down" />
-            	        
-        </LinearLayout>
-    
-    </LinearLayout>
-</LinearLayout>	
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/icPointer"
+            android:text=" " />
+
+    </RelativeLayout>
+
+</LinearLayout>

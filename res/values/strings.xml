@@ -369,6 +369,7 @@
     <string name="activity">Activity: </string>
     <string name="noactivity">Activity not entered</string>
     <string name="emptycalendertext">No scheduled lectures for this week.</string>
+    <string name="test_time">00:00 - 00:00</string>
    
     
     <string name="instagram_client_ID">459cd68d82d642bfb73678ceb77290cd</string>

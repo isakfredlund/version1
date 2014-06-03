@@ -1,4 +1,4 @@
-<android.support.v4.widget.SwipeRefreshLayout 
+<android.support.v4.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/swipe_container_home"
     android:layout_width="fill_parent"
@@ -6,27 +6,18 @@
     android:background="@color/grey_middle"
     android:orientation="vertical"
     android:paddingTop="10dp" >
-    <!--
-		<com.handmark.pulltorefresh.library.PullToRefreshScrollView
-        xmlns:ptr="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/pull_refresh_scrollview"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        ptr:ptrAnimationStyle="flip"
-        ptr:ptrMode="both" >
-    -->
-
+    
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="match_parent" >
-
+        
         <LinearLayout
             android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="373dp"
             android:background="@color/grey_middle"
             android:orientation="vertical" >
-
+            
             <LinearLayout
                 android:id="@+id/next_class_widget"
                 android:layout_width="match_parent"
@@ -37,97 +28,86 @@
                 android:background="@color/white"
                 android:onClick="toSchedule"
                 android:orientation="vertical" >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="190dp"
-                    android:orientation="horizontal" >
-
+                
+                <RelativeLayout
+			        android:id="@+id/relativeLayout1"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_marginLeft="8dp"
+			        android:layout_marginRight="8dp"
+			        android:animateLayoutChanges="true"
+			        android:background="@color/white"
+			        android:orientation="horizontal"
+			        android:scrollbarAlwaysDrawVerticalTrack="true" >
+			        
+                    <TextView
+			            android:id="@+id/list_course_time_start_end"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_alignParentLeft="true"
+			            android:layout_alignParentTop="true"
+			            android:layout_marginLeft="18dp"
+			            android:layout_marginTop="12dp"
+			            android:text="@string/test_time"
+			            android:textAppearance="?android:attr/textAppearanceLarge"
+			            android:textSize="20sp" />
+                    
+                    <TextView
+			            android:id="@+id/list_course_building_id"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_alignLeft="@+id/list_course_time_start_end"
+			            android:layout_below="@+id/list_course_time_start_end"
+			            android:layout_marginBottom="10dp"
+			            android:layout_marginLeft="4dp"
+			            android:layout_marginTop="4dp"
+			            android:text="" />
+                    
+                    <TextView
+			            android:id="@+id/list_course_room_id"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_alignBaseline="@+id/list_course_building_id"
+			            android:layout_alignBottom="@+id/list_course_building_id"
+			            android:layout_marginLeft="4dp"
+			            android:layout_toRightOf="@+id/list_course_building_id"
+			            android:text="No room set"
+			            android:textStyle="bold" />
+                    
                     <View
-                        android:id="@+id/home_schedule1"
-                        android:layout_width="8dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/red_mah" />
-
-                    <LinearLayout
-                        android:layout_width="72dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginTop="8dp"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical" >
-
-                        <TextView
-                            android:id="@+id/text_next_class_start_time"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/grey_dark"
-                            android:textSize="28sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/text_next_class_end_time"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:textColor="@color/grey_dark"
-                            android:textSize="28sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <View
-                        android:id="@+id/home_schedule2"
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@color/red_mah" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical" >
-
-                        <TextView
-                            android:id="@+id/text_next_class_date"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="@string/fultext1"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/grey_dark"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/text_next_class_name"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:textColor="@color/grey_dark"
-                            android:textSize="22sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/text_next_class_location"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:textColor="@color/grey"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/grey" >
-                </View>
-            </LinearLayout>
-
+			            android:id="@+id/calendarColorFrame2"
+			            android:layout_width="1dp"
+			            android:layout_height="fill_parent"
+			            android:layout_alignBottom="@+id/list_course_room_id"
+			            android:layout_alignParentTop="true"
+			            android:layout_marginLeft="10dp"
+			            android:layout_marginTop="8dp"
+			            android:layout_toRightOf="@+id/list_course_time_start_end"
+			            android:background="@color/blue" />
+                    
+                    <TextView
+			            android:id="@+id/list_course_coursename"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_alignBottom="@+id/calendarColorFrame2"
+			            android:layout_alignParentRight="true"
+			            android:layout_alignParentTop="true"
+			            android:layout_marginLeft="10dp"
+			            android:layout_marginRight="18dp"
+			            android:layout_marginTop="12dp"
+			            android:layout_toRightOf="@+id/calendarColorFrame2"
+			            android:text="@string/coursename" />
+                    
+                    <TextView
+			            android:id="@+id/textView1"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:text=" " />
+                    
+               	</RelativeLayout>
+                
+          	</LinearLayout>
+          	
             <LinearLayout
                 android:id="@+id/next_class_widget_2"
                 android:layout_width="match_parent"
@@ -138,97 +118,86 @@
                 android:background="@color/white"
                 android:onClick="toSchedule"
                 android:orientation="vertical" >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="190dp"
-                    android:orientation="horizontal" >
-
-                    <View
-                        android:id="@+id/home_schedule1_2"
-                        android:layout_width="8dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/red_mah" />
-
-                    <LinearLayout
-                        android:layout_width="72dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginTop="8dp"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical" >
-
-                        <TextView
-                            android:id="@+id/text_next_class_start_time_2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/grey_dark"
-                            android:textSize="28sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/text_next_class_end_time_2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:textColor="@color/grey_dark"
-                            android:textSize="28sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <View
-                        android:id="@+id/home_schedule2_2"
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@color/red_mah" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical" >
-
-                        <TextView
-                            android:id="@+id/text_next_class_date_2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="@string/fultext1"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/grey_dark"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/text_next_class_name_2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:textColor="@color/grey_dark"
-                            android:textSize="22sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/text_next_class_location_2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:textColor="@color/grey"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/grey" >
-                </View>
-            </LinearLayout>
-
+                
+                <RelativeLayout
+			        android:id="@+id/relativeLayout2"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_marginLeft="8dp"
+			        android:layout_marginRight="8dp"
+			        android:animateLayoutChanges="true"
+			        android:background="@color/white"
+			        android:orientation="horizontal"
+			        android:scrollbarAlwaysDrawVerticalTrack="true" >
+                    
+                <TextView
+		            android:id="@+id/list_course_time_start_end2"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_alignParentLeft="true"
+		            android:layout_alignParentTop="true"
+		            android:layout_marginLeft="18dp"
+		            android:layout_marginTop="12dp"
+		            android:text="@string/test_time"
+		            android:textAppearance="?android:attr/textAppearanceLarge"
+		            android:textSize="20sp" />
+                
+                <TextView
+		            android:id="@+id/list_course_building_id2"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_alignLeft="@+id/list_course_time_start_end2"
+		            android:layout_below="@+id/list_course_time_start_end2"
+		            android:layout_marginBottom="10dp"
+		            android:layout_marginLeft="4dp"
+		            android:layout_marginTop="4dp"
+		            android:text="" />
+                
+                <TextView
+		            android:id="@+id/list_course_room_id2"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_alignBaseline="@+id/list_course_building_id2"
+		            android:layout_alignBottom="@+id/list_course_building_id2"
+		            android:layout_marginLeft="4dp"
+		            android:layout_toRightOf="@+id/list_course_building_id2"
+		            android:text="No room set"
+		            android:textStyle="bold" />
+                
+               <View
+		            android:id="@+id/calendarColorFrame4"
+		            android:layout_width="1dp"
+		            android:layout_height="fill_parent"
+		            android:layout_alignBottom="@+id/list_course_room_id2"
+		            android:layout_alignParentTop="true"
+		            android:layout_marginLeft="10dp"
+		            android:layout_marginTop="8dp"
+		            android:layout_toRightOf="@+id/list_course_time_start_end2"
+		            android:background="@color/blue" />
+                
+               <TextView
+		            android:id="@+id/list_course_coursename2"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_alignBottom="@+id/calendarColorFrame4"
+		            android:layout_alignParentRight="true"
+		            android:layout_alignParentTop="true"
+		            android:layout_marginLeft="10dp"
+		            android:layout_marginRight="18dp"
+		            android:layout_marginTop="12dp"
+		            android:layout_toRightOf="@+id/calendarColorFrame4"
+		            android:text="@string/coursename" />
+               
+               <TextView
+		            android:id="@+id/textView1"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text=" " />
+                    
+              	</RelativeLayout>
+                
+           	</LinearLayout>
+           	
             <RelativeLayout
                 android:id="@+id/itslearning_widget"
                 android:layout_width="wrap_content"
@@ -240,17 +209,18 @@
                 android:background="@color/grey_middle"
                 android:onClick="toITSL"
                 android:orientation="vertical" >
-
-                <ImageView
-                    android:id="@+id/imageView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:src="@drawable/its_icon" />
-            </RelativeLayout>
-
-            <RelativeLayout
+                
+	           	<ImageView
+	                android:id="@+id/imageView1"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_alignParentLeft="true"
+	                android:layout_alignParentTop="true"
+	                android:src="@drawable/its_icon" />  
+                
+           	</RelativeLayout>
+            
+           	<RelativeLayout
                 android:id="@+id/RelativeLayout1"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
@@ -259,15 +229,15 @@
                 android:layout_marginRight="8dp"
                 android:background="@color/grey_middle"
                 android:orientation="vertical" >
-
-                <ImageView
+            
+            	<ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="fill_parent"
                     android:layout_height="340dp"
                     android:background="@color/grey_middle"
-                    android:src="@drawable/instagram_frame" />
-
-                <TextView
+                    android:src="@drawable/instagram_frame" />    
+                
+            	<TextView
                     android:id="@+id/textView1"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
@@ -278,23 +248,23 @@
                     android:text="#MAHStudent"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
-                
-					<ImageView
-					    android:id="@+id/instagramview"
-					    android:layout_width="255dp"
-					    android:layout_height="255dp"
-					    android:layout_centerHorizontal="true"
-					    android:layout_centerVertical="true"
-					    android:layout_weight="0.67"
-					    android:background="@color/grey_dark"
-					    android:padding="5dp"
-					    android:scaleType="centerInside"
-					    android:src="@drawable/loading" />
-
-            </RelativeLayout>
-            <!-- </com.handmark.pulltorefresh.library.PullToRefreshScrollView> -->
+            	
+            	<ImageView
+                    android:id="@+id/instagramview"
+                    android:layout_width="255dp"
+                    android:layout_height="255dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_weight="0.67"
+                    android:background="@color/grey_dark"
+                    android:padding="5dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/loading" />
+            	
+           	</RelativeLayout>
+            
         </LinearLayout>
-
+        
     </ScrollView>
-
+    
 </android.support.v4.widget.SwipeRefreshLayout>
