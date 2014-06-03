@@ -97,12 +97,15 @@
 			            android:layout_marginTop="12dp"
 			            android:layout_toRightOf="@+id/calendarColorFrame2"
 			            android:text="@string/coursename" />
-                    
-                    <TextView
-			            android:id="@+id/textView1"
-			            android:layout_width="wrap_content"
-			            android:layout_height="wrap_content"
-			            android:text=" " />
+
+          			<TextView
+          			    android:id="@+id/list_course_date"
+          			    android:layout_width="wrap_content"
+          			    android:layout_height="wrap_content"
+          			    android:layout_alignParentLeft="true"
+          			    android:layout_alignLeft="@+id/list_course_time_start_end"
+          			    android:layout_marginBottom="20dp"
+          			    android:text="TestDate" />
                     
                	</RelativeLayout>
                 

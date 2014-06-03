@@ -197,12 +197,20 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 				textNextClassDate.setText(nextClass.getDate());*/
 				TextView timeView = (TextView) nextClassWidget.findViewById(R.id.list_course_time_start_end);
 				timeView.setText(nextClass.getStartTime()+" - " + nextClass.getEndTime());
-				TextView textNextClassLocation = (TextView) nextClassWidget.findViewById(R.id.list_course_room_id);
-				String classRoom = nextClass.getLocation();
-				if(classRoom.length() > 7){
-					classRoom = classRoom.substring(0, 6) + "(...)";
+				TextView textNextClassBuilding = (TextView) nextClassWidget.findViewById(R.id.list_course_building_id);
+				String classBuilding = nextClass.getLocation();
+				if(classBuilding.length() > 2){
+					classBuilding = classBuilding.substring(0, 2);
 				}
-				textNextClassLocation.setText(classRoom);
+				textNextClassBuilding.setText(classBuilding);
+				TextView textNextClassRoom = (TextView) nextClassWidget.findViewById(R.id.list_course_room_id);
+				String classRoom = nextClass.getLocation();
+				if(classRoom.length() > 6){
+					classRoom = classRoom.substring(2, 6);
+				}
+				textNextClassRoom.setText(classRoom);
+				TextView dateView = (TextView) nextClassWidget.findViewById(R.id.list_course_date);
+				dateView.setText(nextClass.getDate());
 		
 				
 				//View scheduleColor1 = (View) nextClassWidget.findViewById(R.id.home_schedule1);
@@ -224,12 +232,18 @@ public class FragmentHome extends Fragment implements FeedManager.FeedManagerDon
 				textNextClassDate.setText(nextClass.getDate2());*/
 				TextView timeView = (TextView) nextClassWidget2.findViewById(R.id.list_course_time_start_end2);
 				timeView.setText(nextClass.getStartTime2()+" - " + nextClass.getEndTime2());
-				TextView textNextClassLocation = (TextView) nextClassWidget2.findViewById(R.id.list_course_room_id2);
-				String classRoom = nextClass.getLocation2();
-				if(classRoom.length() > 7){
-					classRoom = classRoom.substring(0, 6) + "(...)";
+				TextView textNextClassBuilding = (TextView) nextClassWidget2.findViewById(R.id.list_course_building_id2);
+				String classBuilding = nextClass.getLocation2();
+				if(classBuilding.length() > 2){
+					classBuilding = classBuilding.substring(0, 2);
 				}
-				textNextClassLocation.setText(classRoom);			
+				textNextClassBuilding.setText(classBuilding);
+				TextView textNextClassRoom = (TextView) nextClassWidget2.findViewById(R.id.list_course_room_id2);
+				String classRoom = nextClass.getLocation2();
+				if(classRoom.length() > 6){
+					classRoom = classRoom.substring(2, 6);
+				}
+				textNextClassRoom.setText(classRoom);		
 		
 				
 				//View scheduleColor1 = (View) nextClassWidget2.findViewById(R.id.home_schedule1_2);
