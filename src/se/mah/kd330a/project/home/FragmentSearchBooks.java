@@ -13,12 +13,13 @@ import android.view.ViewGroup;
 public class FragmentSearchBooks extends Fragment {
 	
 	View search;
-	public View onCreateView1(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) { 	
-	    ViewGroup rootView = (ViewGroup) inflater
-       .inflate(R.layout.bookmarket_search_fragment, container, false);
-	    
-	    
-	    return rootView;
+
+	
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.bookmarket_search_fragment, container, false);
+		return rootView;
 	}
 
 }
