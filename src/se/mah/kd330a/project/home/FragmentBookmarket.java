@@ -45,18 +45,25 @@ public class FragmentBookmarket extends Fragment //implements OnClickListener
 	        	 FragmentTransaction ft = fm.beginTransaction(); //Start adding the fragment by getting the manager for handling this
 	        	 FragmentSearchBooks hf = new FragmentSearchBooks(); //Create the fragment 
 	        	 ft.replace(R.id.content_frame, hf); //And add it to the manager
+	        	 
+	        	 ft.addToBackStack(null);
+	        	 
 	        	 ft.commit(); //OK go ahead do your transaction nothing real
+	        	
 	         }
 	     });
 	     
-	     final Button newAdButton = (Button) rootView.findViewById(R.id.Search);
+	     final Button newAdButton = (Button) rootView.findViewById(R.id.New_ad);
 	     newAdButton.setOnClickListener(new View.OnClickListener() {
 	         public void onClick(View v) {
 	        	 Log.i("newAd","clicked");
 	        	 FragmentManager fm = getFragmentManager();
 	        	 FragmentTransaction ft = fm.beginTransaction(); //Start adding the fragment by getting the manager for handling this
-	        	 FragmentSearchBooks hf = new FragmentNewAd(); //Create the fragment 
+	        	 FragmentNewAd hf = new FragmentNewAd(); //Create the fragment 
 	        	 ft.replace(R.id.content_frame, hf); //And add it to the manager
+	        	 
+	        	 ft.addToBackStack(null);
+	        	 
 	        	 ft.commit(); //OK go ahead do your transaction nothing real
 	         }
 	     });

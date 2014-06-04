@@ -73,16 +73,19 @@
         android:layout_alignLeft="@+id/textView1"
         android:layout_alignRight="@+id/textView1"
         android:layout_alignTop="@+id/textView1"
-        android:onClick="Search" />
+        android:onClick="Search"
+        android:background="@android:color/transparent" />
 
     <Button
         android:id="@+id/New_ad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView1"
-        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignLeft="@+id/textView1"
         android:layout_alignRight="@+id/textView1"
+        android:layout_alignTop="@+id/textView4"
         android:layout_below="@+id/textView4"
-        android:onClick="new_ad" />
+        android:onClick="new_ad"
+        android:background="@android:color/transparent" />
 
 </RelativeLayout>
