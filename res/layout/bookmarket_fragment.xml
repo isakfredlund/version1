@@ -75,7 +75,7 @@
         android:layout_alignTop="@+id/textView1"
         android:onClick="Search" />
 
-    <View
+    <Button
         android:id="@+id/New_ad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
